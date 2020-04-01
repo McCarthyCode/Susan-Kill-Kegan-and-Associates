@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def handler400(request, exception=None):
     return render(request, 'home/400.html', status=400)
@@ -14,4 +15,4 @@ def handler500(request, exception=None):
     return render(request, 'home/500.html', status=500)
 
 def index(request):
-    return HttpResponse('Home')
+    return render(request, 'home/index.html')

@@ -1,0 +1,68 @@
+@import '_variables'
+
+#navbar
+  grid-row: title-bottom / nav-bottom
+  background-color: $mid-gray
+  height: 56px
+
+  #navbarMenuButton
+    border: none
+    color: $white
+    background-color: transparent
+    // @include transition(color, .5s)
+    cursor: pointer
+
+    .fa-bars
+      vertical-align: -8px
+
+  #navbarMenuButton:hover
+    color: $white !important
+
+  #navbarCollapse
+    display: none
+    position: absolute
+    top: 56px
+    right: 0
+    left: 0
+    background-color: $darker-gray
+    padding: 0 .5rem .5rem .5rem
+    max-height: calc(100vh - 69px)
+    overflow-y: auto
+    z-index: 3
+
+    ul
+      font-family: $open-sans
+
+      .nav-item
+        margin-top: .5rem
+
+      .nav-item
+        text-align: center
+
+        a.nav-link
+          background-color: $mid-gray
+          border-radius: .25rem
+          color: $white !important
+
+@media screen and (min-width: $breakpoint-md)
+  #navbar
+    #navbarCollapse
+      display: inline
+      position: unset
+      padding: 0
+      background-color: transparent
+
+      ul
+        .nav-item
+          margin-top: 0
+
+        .nav-item
+          a.nav-link
+            padding: 0 .5rem
+            vertical-align: middle
+            color: $white !important
+            background-color: transparent
+            // @include transition(color, .5s)
+
+          a.nav-link:hover
+            color: $white !important
