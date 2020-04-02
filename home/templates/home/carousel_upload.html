@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<section class="container">
+  {% include 'home/messages.html' %}
+  <h3 class="h3">Upload Carousel Image</h3>
+  <form action="{% url 'home:carousel-upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.image }}
+    <input class="btn btn-primary form-control" type="submit" value="Upload">
+  </form>
+</section>
+{% endblock %}

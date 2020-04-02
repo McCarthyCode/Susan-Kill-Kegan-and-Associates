@@ -10,6 +10,10 @@
   padding-bottom: 1rem;
 }
 
+#content .container {
+  max-width: 800px;
+}
+
 #title {
   grid-row: top/title-bottom;
   background-color: #87806d;
@@ -57,6 +61,138 @@ a, .fa-external-link-alt {
 .fa-external-link-alt {
   font-size: 0.5em;
   vertical-align: 1px;
+}
+
+form input[type=text], form input[type=number], form input[type=password], form input[type=submit], form input[type=file], form textarea, form select, form label {
+  margin-bottom: 0.5rem;
+}
+form input[type=text], form input[type=number], form input[type=password],
+form textarea, form select, form label {
+  color: #ffffff;
+  border-color: #818181;
+  background-color: #333333;
+}
+form label.form-control {
+  cursor: pointer;
+}
+form select.form-control {
+  padding: 0 0.5rem;
+}
+form select.form-control option {
+  padding: 0;
+}
+form input[type=file] {
+  width: 100%;
+  height: 38px;
+  color: #ffffff;
+}
+form .input-group label {
+  cursor: pointer;
+}
+form .input-group .input-group-append {
+  border-color: #818181;
+  background-color: #818181;
+  width: 40px;
+  height: 38px;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  z-index: 3;
+}
+form .input-group .input-group-append input[type=radio], form .input-group .input-group-append input[type=checkbox], form .input-group .input-group-append .calendar {
+  cursor: pointer;
+  color: #ffffff;
+}
+form .input-group .input-group-append input[type=radio] {
+  height: 16px;
+  margin: auto;
+}
+form .input-group .input-group-append .input-group-text {
+  color: #ffffff;
+  border-color: #818181;
+  background-color: #818181;
+}
+form .input-group .input-group-append .input-group-text i {
+  min-width: 14px;
+}
+form .input-group-checkbox .input-group-append {
+  padding: 11px 0.75rem;
+}
+form .radio {
+  margin-bottom: 0;
+}
+form .radio li:not(.top) label {
+  border-top-left-radius: 0;
+}
+form .radio li:not(.top) .input-group-append {
+  border-top-right-radius: 0;
+}
+form .radio li:not(:last-child) label {
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+}
+form .radio li:not(:last-child) .input-group-append {
+  border-bottom-right-radius: 0;
+}
+form .address > :not(:last-child),
+form .password-confirm > :not(:last-child),
+form .name > :not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: -1px;
+}
+form .address > :not(:first-child),
+form .password-confirm > :not(:first-child),
+form .name > :not(:first-child) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+form .city-state-zip > :nth-child(2) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+form .city-state-zip > :last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+form .row {
+  margin-right: 0;
+  margin-left: 0;
+}
+form .errorlist {
+  color: #ff0000;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .city-state-zip > :not(:last-child),
+.number > :not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .city-state-zip > :not(:first-child),
+.number > :not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+.alert p {
+  margin: 0;
+}
+.alert a:not(.close) {
+  text-decoration: underline;
+}
+
+.alert-danger p, .alert-danger a {
+  color: #721c24;
+}
+
+.alert-success p, .alert-success a {
+  color: #155724;
+}
+
+.alert-info p, .alert-info a {
+  color: #0c5460;
 }
 
 #navbar {
@@ -125,12 +261,24 @@ a, .fa-external-link-alt {
 }
 #carousel {
   background-color: #000000;
-  background-image: linear-gradient(to right, #645379, #000000, #645379);
+  background-image: radial-gradient(circle, #000000, #645379);
 }
 #carousel .carousel-inner {
-  max-width: 800px;
-  height: 600px;
+  width: 100%;
+  min-height: 259.5px;
+  max-height: 600px;
   margin: 0 auto;
+}
+#carousel .carousel-inner .carousel-item {
+  max-height: 600px;
+}
+#carousel .carousel-inner .carousel-item img {
+  max-width: 800px;
+  max-height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #carousel .carousel-control-prev-icon,
 #carousel .carousel-control-next-icon {

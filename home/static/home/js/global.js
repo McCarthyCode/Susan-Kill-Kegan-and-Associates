@@ -25,7 +25,7 @@ $(document).ready(() => {
     const carouselHeight = $('#carousel').outerHeight();
     const footerHeight = $('#footer').outerHeight();
 
-    const height = viewportHeight - titleHeight - navbarHeight - carouselHeight - footerHeight;
+    const height = viewportHeight - titleHeight - navbarHeight - (carouselHeight === undefined ? 0 : carouselHeight) - footerHeight;
 
     $('#content .container').css({
       'min-height': `${height}px`,

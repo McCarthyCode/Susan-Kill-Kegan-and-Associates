@@ -1,11 +1,23 @@
 #carousel
   background-color: $black
-  background-image: linear-gradient(to right, $dark-purple, $black, $dark-purple)
+  background-image: radial-gradient(circle, $black, $dark-purple)
 
   .carousel-inner
-    max-width: 800px
-    height: 600px
+    width: 100%
+    min-height: 259.5px
+    max-height: 600px
     margin: 0 auto
+
+    .carousel-item
+      max-height: 600px
+
+      img
+        max-width: 800px
+        max-height: 600px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
 
   .carousel-control-prev-icon,
   .carousel-control-next-icon
