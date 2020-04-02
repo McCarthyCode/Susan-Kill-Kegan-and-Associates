@@ -29,15 +29,22 @@
   grid-row: nav-bottom / bottom
   background-color: $darker-gray
 
-h1.h1, h4.h4
+h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6
   font-family: $bree-serif
+
+h1.h1, h2.h2, h5.h5, h6.h6
   color: $yellow
 
-p, a, li
+h3.h3, h4.h4
+  color: $orange
+
+p, a, li, address
   font-family: $open-sans
   color: $white
 
+a, .fa-external-link-alt
+  color: $cyan !important
+
 .fa-external-link-alt
   font-size: .5em
-  color: $cyan
   vertical-align: 1px

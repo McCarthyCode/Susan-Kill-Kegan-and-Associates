@@ -22,9 +22,10 @@ $(document).ready(() => {
     const viewportHeight = $(window).outerHeight();
     const titleHeight = $('#title').outerHeight();
     const navbarHeight = $('#navbar').outerHeight();
+    const carouselHeight = $('#carousel').outerHeight();
     const footerHeight = $('#footer').outerHeight();
 
-    const height = viewportHeight - titleHeight - navbarHeight - footerHeight;
+    const height = viewportHeight - titleHeight - navbarHeight - carouselHeight - footerHeight;
 
     $('#content .container').css({
       'min-height': `${height}px`,

@@ -33,19 +33,29 @@
   background-color: #1e1e1e;
 }
 
-h1.h1, h4.h4 {
+h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6 {
   font-family: "Bree Serif", serif;
+}
+
+h1.h1, h2.h2, h5.h5, h6.h6 {
   color: #faf9b2;
 }
 
-p, a, li {
+h3.h3, h4.h4 {
+  color: #f8a572;
+}
+
+p, a, li, address {
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
 }
 
+a, .fa-external-link-alt {
+  color: #00ffff !important;
+}
+
 .fa-external-link-alt {
   font-size: 0.5em;
-  color: #00ffff;
   vertical-align: 1px;
 }
 
@@ -113,6 +123,20 @@ p, a, li {
     color: #ffffff !important;
   }
 }
+#carousel {
+  background-color: #000000;
+  background-image: linear-gradient(to right, #645379, #000000, #645379);
+}
+#carousel .carousel-inner {
+  max-width: 800px;
+  height: 600px;
+  margin: 0 auto;
+}
+#carousel .carousel-control-prev-icon,
+#carousel .carousel-control-next-icon {
+  fill: #faf9b2;
+}
+
 #footer {
   padding: 0.75rem;
   background-color: #444444;
