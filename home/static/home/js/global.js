@@ -9,21 +9,37 @@ $(document).ready(() => {
     .after(' <i class="fas fa-external-link-alt" title="External Link"></i>');
 
   // resize title
-  let $container = $('#title .container');
-  let $grid = $('#grid');
-
   function resizeTitle() {
-    let height = $container.outerHeight() + 16 * 2;
+    const height = $('#title .container').outerHeight();
 
-    $grid.css({
-      'grid-template-rows': `[top] ${height}px [title-bottom] 56px [nav-bottom] auto [bottom]`
+    $('#grid').css({
+      'grid-template-rows': `[top] ${height}px [title-bottom] 56px [nav-bottom] auto [bottom]`,
     });
-
   }
 
-  resizeTitle();
-  setTimeout(resizeTitle, 500); // insurance measure
-  $(window).on('resize orientationchange', resizeTitle);
+  // resize content
+  function resizeContent() {
+    const viewportHeight = $(window).outerHeight();
+    const titleHeight = $('#title').outerHeight();
+    const navbarHeight = $('#navbar').outerHeight();
+    const footerHeight = $('#footer').outerHeight();
+
+    const height = viewportHeight - titleHeight - navbarHeight - footerHeight;
+
+    $('#content .container').css({
+      'min-height': `${height}px`,
+    });
+  }
+
+  // combine resized title and content
+  function resize() {
+    resizeTitle();
+    resizeContent();
+  }
+
+  resize();
+  setTimeout(resize, 500); // insurance measure
+  $(window).on('resize orientationchange', resize);
 
   // navbar menu
   $('#navbarMenuButton').click(() => {

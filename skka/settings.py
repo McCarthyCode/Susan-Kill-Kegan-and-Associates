@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import pytz
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -113,6 +114,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Chicago'
 
+TZ = pytz.timezone(TIME_ZONE)
+
 USE_I18N = True
 
 USE_L10N = True
@@ -129,3 +132,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Additional variables
+
+NAME = 'Susan Kill Kegan & Associates'
