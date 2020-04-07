@@ -4,42 +4,53 @@ $(document).ready(() => {
   let $down = $('#imageList .controls :last-child');
 
   $up.click(function () {
-    console.log('up');
     let $li = $(this).parents('li');
 
-    if ($li.is(':first-of-type')) {
-      console.log('first');
-      return;
+    if (!$li.is(':first-of-type')) {
+      let $prev = $li.prev();
+
+      $li.animate({'bottom': `${$prev.outerHeight() + 8}px`}, 500, function () {
+        $(this).after($prev.detach()).prop('style', '');
+      });
+
+      $prev.animate({'top': `${$li.outerHeight() + 8}px`}, 500, function () {
+        $(this).prop('style', '');
+      });
     }
-
-    let $prev = $li.prev();
-
-    $li.animate({'bottom': `${$prev.outerHeight() + 8}px`}, 500, function () {
-      $(this).after($prev.detach()).prop('style', '');
-    });
-
-    $prev.animate({'top': `${$li.outerHeight() + 8}px`}, 500, function () {
-      $(this).prop('style', '');
-    });
   });
 
   $down.click(function () {
-    console.log('down');
     let $li = $(this).parents('li');
 
-    if ($li.is(':last-of-type')) {
-      console.log('last');
-      return;
+    if (!$li.is(':last-of-type')) {
+      let $next = $li.next();
+
+      $li.animate({'top': `${$next.outerHeight() + 8}px`}, 500, function () {
+        $(this).before($next.detach()).prop('style', '');
+      });
+
+      $next.animate({'bottom': `${$li.outerHeight() + 8}px`}, 500, function () {
+        $(this).prop('style', '');
+      });
     }
+  });
 
-    let $next = $li.next();
+  // submit changes
+  $('#submit').click(function () {
+    let order = [];
 
-    $li.animate({'top': `${$next.outerHeight() + 8}px`}, 500, function () {
-      $(this).before($next.detach()).prop('style', '');
+    $('#imageList li').each(function () {
+      order.push($(this).data('id'));
     });
 
-    $next.animate({'bottom': `${$li.outerHeight() + 8}px`}, 500, function () {
-      $(this).prop('style', '');
+    $.ajax('/carousel/reorder/', {
+      'data': {'order': order},
+      'success': function (data) {
+        window.location.reload(false);
+      },
+      'error': function (data) {
+        window.location.reload(false);
+      },
     });
   });
 });
