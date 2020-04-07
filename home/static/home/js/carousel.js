@@ -1,4 +1,4 @@
- $(document).ready(() => {
+$(document).ready(() => {
   $('#carousel').hover(
     function () {
       $(this).carousel('pause');

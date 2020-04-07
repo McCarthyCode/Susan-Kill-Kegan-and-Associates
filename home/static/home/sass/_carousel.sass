@@ -22,3 +22,70 @@
   .carousel-control-prev-icon,
   .carousel-control-next-icon
     fill: $yellow
+
+#btnList
+  width: 100%
+  text-align: center
+
+  ul
+    margin: 0 auto .5rem auto
+
+    li
+      display: inline
+      text-align: center
+      box-sizing: border-box
+      height: 38px
+      margin-bottom: 0
+
+      > *
+        margin-bottom: 0
+
+#imageList
+  padding: 0
+
+  li
+    list-style: none
+    display: flex
+    background-color: $mid-gray
+    width: 100%
+    min-width: 290px
+    max-width: 400px
+    border-radius: .25rem
+    margin: 0 auto .5rem auto
+    padding: .5rem 1rem
+    justify-content: space-between
+
+    .controls
+      i
+        display: block
+        cursor: pointer
+        line-height: 51px
+
+      .fa-caret-up:hover, .fa-caret-down:hover
+        color: $purple
+
+    .img-container, .btn-container
+      position: relative
+
+      a, button, input[type="submit"]
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+
+        img
+          box-sizing: border-box
+          border: 1px solid $light-gray
+
+      .inactive
+        opacity: 50
+
+    .img-container
+      height: 100px
+      width: 100px
+
+    .btn-container
+      width: 75px
+
+  li:first-child .controls i:first-child,
+  li:last-child .controls i:last-child
+    visibility: hidden

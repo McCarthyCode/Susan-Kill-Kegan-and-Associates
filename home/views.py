@@ -27,6 +27,16 @@ def index(request):
         'name': NAME,
     })
 
+def carousel_manager(request):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    return render(request, 'home/carousel_manager.html', {
+        'images': CarouselImage.objects.all().order_by('-date_updated'),
+        'year': datetime.now(TZ).year,
+        'name': NAME,
+    })
+
 def carousel_upload(request):
     if request.method == 'GET':
         return render(request, 'home/carousel_upload.html', {

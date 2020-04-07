@@ -6,7 +6,16 @@
   <form action="{% url 'home:carousel-upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.image }}
-    <input class="btn btn-primary form-control" type="submit" value="Upload">
+    <section id="btnList">
+      <ul>
+        <li>
+          <a class="btn btn-secondary" href="{% url 'home:carousel' %}">Back to Carousel Page</a>
+        </li>
+        <li>
+          <input class="btn btn-primary" type="submit" value="Upload">
+        </li>
+      </ul>
+    </section>
   </form>
 </section>
 {% endblock %}

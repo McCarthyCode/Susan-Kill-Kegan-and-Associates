@@ -45,8 +45,11 @@ p, a, li, address
   font-family: $open-sans
   color: $white
 
-a, .fa-external-link-alt
+a:not(.btn), .fa-external-link-alt
   color: $cyan !important
+
+.btn
+  font-weight: bold
 
 .fa-external-link-alt
   font-size: .5em

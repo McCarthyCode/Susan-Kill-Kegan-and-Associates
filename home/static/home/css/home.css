@@ -54,8 +54,12 @@ p, a, li, address {
   color: #ffffff;
 }
 
-a, .fa-external-link-alt {
+a:not(.btn), .fa-external-link-alt {
   color: #00ffff !important;
+}
+
+.btn {
+  font-weight: bold;
 }
 
 .fa-external-link-alt {
@@ -197,7 +201,7 @@ form .errorlist {
 
 #navbar {
   grid-row: title-bottom/nav-bottom;
-  background-color: #444444;
+  background-color: #555555;
   height: 56px;
 }
 #navbar #navbarMenuButton {
@@ -234,7 +238,7 @@ form .errorlist {
   text-align: center;
 }
 #navbar #navbarCollapse ul .nav-item a.nav-link {
-  background-color: #444444;
+  background-color: #555555;
   border-radius: 0.25rem;
   color: #ffffff !important;
 }
@@ -285,9 +289,77 @@ form .errorlist {
   fill: #faf9b2;
 }
 
+#btnList {
+  width: 100%;
+  text-align: center;
+}
+#btnList ul {
+  margin: 0 auto 0.5rem auto;
+}
+#btnList ul li {
+  display: inline;
+  text-align: center;
+  box-sizing: border-box;
+  height: 38px;
+  margin-bottom: 0;
+}
+#btnList ul li > * {
+  margin-bottom: 0;
+}
+
+#imageList {
+  padding: 0;
+}
+#imageList li {
+  list-style: none;
+  display: flex;
+  background-color: #555555;
+  width: 100%;
+  min-width: 290px;
+  max-width: 400px;
+  border-radius: 0.25rem;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+}
+#imageList li .controls i {
+  display: block;
+  cursor: pointer;
+  line-height: 51px;
+}
+#imageList li .controls .fa-caret-up:hover, #imageList li .controls .fa-caret-down:hover {
+  color: #d4afff;
+}
+#imageList li .img-container, #imageList li .btn-container {
+  position: relative;
+}
+#imageList li .img-container a, #imageList li .img-container button, #imageList li .img-container input[type=submit], #imageList li .btn-container a, #imageList li .btn-container button, #imageList li .btn-container input[type=submit] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#imageList li .img-container a img, #imageList li .img-container button img, #imageList li .img-container input[type=submit] img, #imageList li .btn-container a img, #imageList li .btn-container button img, #imageList li .btn-container input[type=submit] img {
+  box-sizing: border-box;
+  border: 1px solid #818181;
+}
+#imageList li .img-container .inactive, #imageList li .btn-container .inactive {
+  opacity: 50;
+}
+#imageList li .img-container {
+  height: 100px;
+  width: 100px;
+}
+#imageList li .btn-container {
+  width: 75px;
+}
+#imageList li:first-child .controls i:first-child,
+#imageList li:last-child .controls i:last-child {
+  visibility: hidden;
+}
+
 #footer {
   padding: 0.75rem;
-  background-color: #444444;
+  background-color: #555555;
   right: 0;
   bottom: 0;
   left: 0;
