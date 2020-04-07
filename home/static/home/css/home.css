@@ -313,6 +313,7 @@ form .errorlist {
 #imageList li {
   list-style: none;
   display: flex;
+  position: relative;
   background-color: #555555;
   width: 100%;
   min-width: 290px;

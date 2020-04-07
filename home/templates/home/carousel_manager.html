@@ -14,7 +14,7 @@
   </section>
   <ol id="imageList">
     {% for img in images %}
-    <li data-position="{{ forloop.counter0 }}" data-id="{{ img.id }}">
+    <li data-id="{{ img.id }}">
       <div class="controls">
         <i class="fas fa-caret-up fa-3x"></i>
         <i class="fas fa-caret-down fa-3x"></i>
@@ -30,5 +30,7 @@
     </li>
     {% endfor %}
   </ol>
-</section>
+</section>{% load static %}
+<!-- <script src="{% static 'home/js/carousel_manager.js' %}"></script> -->
+<script src="{% static 'home/js/carousel_manager.min.js' %}"></script>
 {% endblock %}
