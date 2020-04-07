@@ -3,10 +3,8 @@
 ## High Priorities
 
 - Carousel manager
-  - Add link and `user-select: none;` to title
   - CarouselImages
     - Reorder
-      - Front end
       - Back end
     - Delete
       - Back end

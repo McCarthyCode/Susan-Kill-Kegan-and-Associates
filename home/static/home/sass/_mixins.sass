@@ -1,0 +1,24 @@
+@mixin user-select-none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
+
+@mixin transition($property, $duration)
+  -webkit-transition: $property $duration
+  transition: $property $duration
+
+@mixin transform($properties...)
+  -webkit-transform: $properties
+  -moz-transform: $properties
+  -ms-transform: $properties
+  -o-transform: $properties
+  transform: $properties
+
+@mixin linear-gradient($direction, $colors...)
+  background: -webkit-linear-gradient($direction, $colors)
+  background: -moz-linear-gradient($direction, $colors)
+  background: -ms-linear-gradient($direction, $colors)
+  background: -o-linear-gradient($direction, $colors)
+  background: linear-gradient($direction, $colors)

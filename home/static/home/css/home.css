@@ -21,6 +21,11 @@
 }
 #title h1.h1, #title h4.h4 {
   text-shadow: -2px 2px 8px #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 #title h1.h1 {
   color: #faf9b2;
