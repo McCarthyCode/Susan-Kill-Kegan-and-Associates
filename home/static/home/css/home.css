@@ -408,7 +408,7 @@ form .errorlist {
   border-left: 1px solid white;
 }
 
-.container img {
+.block-image {
   margin: 0 auto 1rem auto;
   border: 0.25rem solid #818181;
   display: flex;
