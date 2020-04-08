@@ -59,11 +59,14 @@ def carousel_upload(request):
         form = CarouselForm(request.POST, request.FILES)
 
         if form.is_valid():
-            image = form.save()
-            image.image_ops()
-            image.save()
+            images = request.FILES.getlist('images')
+            for img in images:
+                image = CarouselImage(image=img)
+                image.image_ops()
+                image.save()
 
-            messages.success(request, 'You have successfully added an image to the carousel.')
+            images_len = len(images)
+            messages.success(request, 'You have successfully added %d image%s to the carousel.' % (images_len, '' if images_len == 1 else 's'))
 
             return redirect('home:carousel-upload')
 

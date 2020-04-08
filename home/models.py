@@ -59,11 +59,12 @@ class CarouselImage(TimestampedModel):
                     new_width = int(width * new_height / height)
 
             img = img.resize((new_width, new_height), Image.ANTIALIAS)
-            img_file = BytesIO()
-            img.save(img_file, 'JPEG', quality=90)
 
-            new_name = 'thumbnail_' + self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
-            self.thumbnail.save(new_name, img_file)
+        img_file = BytesIO()
+        img.save(img_file, 'JPEG', quality=90)
+
+        new_name = 'thumbnail_' + self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
+        self.thumbnail.save(new_name, img_file)
 
     def hash_thumbnail(self, block_size=65536):
         hasher = hashlib.md5()
@@ -101,12 +102,13 @@ class CarouselImage(TimestampedModel):
                     new_width = int(width * new_height / height)
 
             img = img.resize((new_width, new_height), Image.ANTIALIAS)
-            img_file = BytesIO()
-            img.save(img_file, 'JPEG', quality=90)
 
-            new_name = self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
-            self.image.delete()
-            self.image.save(new_name, img_file)
+        img_file = BytesIO()
+        img.save(img_file, 'JPEG', quality=90)
+
+        new_name = self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
+        self.image.delete()
+        self.image.save(new_name, img_file)
 
     def hash_image(self, block_size=65536):
         hasher = hashlib.md5()

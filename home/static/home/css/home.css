@@ -294,25 +294,18 @@ form .errorlist {
 }
 
 #btnList {
-  width: 100%;
-  text-align: center;
+  margin-bottom: 0.25rem;
 }
-#btnList ul {
-  margin: 0 auto 0.5rem auto;
+#btnList li {
+  display: inline-block;
+  margin-bottom: 0.25rem;
 }
-#btnList ul li {
-  display: inline;
-  text-align: center;
-  box-sizing: border-box;
-  height: 38px;
-  margin-bottom: 0;
-}
-#btnList ul li > * {
+#btnList li > * {
   margin-bottom: 0;
 }
 
 #carouselUpload input[type=file] {
-  width: 278px;
+  width: 454px;
 }
 
 #imageList {
@@ -335,6 +328,8 @@ form .errorlist {
   display: block;
   cursor: pointer;
   line-height: 54px;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
 }
 #imageList li .controls i:hover {
   color: #818181;
@@ -345,7 +340,8 @@ form .errorlist {
 #imageList li .img-container a, #imageList li .img-container button, #imageList li .img-container input[type=submit], #imageList li .btn-container a, #imageList li .btn-container button, #imageList li .btn-container input[type=submit] {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 #imageList li .img-container a img, #imageList li .img-container button img, #imageList li .img-container input[type=submit] img, #imageList li .btn-container a img, #imageList li .btn-container button img, #imageList li .btn-container input[type=submit] img {
   box-sizing: border-box;

@@ -3,16 +3,17 @@
 <section class="container">
   {% include 'home/messages.html' %}
   <h3 class="h3 text-center">Edit Carousel Images</h3>
-  <section id="btnList">
-    <ul>
-      <li>
-        <a class="btn btn-secondary" href="{% url 'home:carousel-upload' %}">Upload Photos</a>
-      </li>
-      <li>
-        <button id="submit" class="btn btn-primary inactive">Save Changes</button>
-      </li>
-    </ul>
-  </section>
+  <ul id="btnList" class="text-center">
+    <li>
+      <a class="btn btn-secondary" href="{% url 'home:index' %}">Back to Home Page</a>
+    </li>
+    <li>
+      <a class="btn btn-secondary" href="{% url 'home:carousel-upload' %}">Upload Photos</a>
+    </li>
+    <li>
+      <button id="submit" class="btn btn-primary inactive">Save Changes</button>
+    </li>
+  </ul>
   <ol id="imageList">
     {% for img in images %}
     <li data-id="{{ img.id }}">

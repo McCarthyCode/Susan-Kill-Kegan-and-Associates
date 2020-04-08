@@ -24,24 +24,17 @@
     fill: $yellow
 
 #btnList
-  width: 100%
-  text-align: center
+  margin-bottom: .25rem
 
-  ul
-    margin: 0 auto .5rem auto
+  li
+    display: inline-block
+    margin-bottom: .25rem
 
-    li
-      display: inline
-      text-align: center
-      box-sizing: border-box
-      height: 38px
+    > *
       margin-bottom: 0
 
-      > *
-        margin-bottom: 0
-
 #carouselUpload input[type="file"]
-  width: 278px
+  width: 454px
 
 #imageList
   padding: 0
@@ -64,6 +57,7 @@
         display: block
         cursor: pointer
         line-height: 54px
+        @include transition(color, .5s)
 
       i:hover
         color: $light-gray
@@ -74,7 +68,8 @@
       a, button, input[type="submit"]
         position: absolute
         top: 50%
-        transform: translateY(-50%)
+        left: 50%
+        transform: translate(-50%, -50%)
 
         img
           box-sizing: border-box
