@@ -2,10 +2,12 @@
 {% block content %}
 <section class="container">
   {% include 'home/messages.html' %}
-  <h3 class="h3">Upload Carousel Image</h3>
-  <form action="{% url 'home:carousel-upload' %}" method="POST" enctype="multipart/form-data">
+  <h3 class="h3 text-center">Upload Carousel Image</h3>
+  <form id="carouselUpload" action="{% url 'home:carousel-upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.image }}
+    <div class="text-center">
+      {{ form.image }}
+    </div>
     <section id="btnList">
       <ul>
         <li>
