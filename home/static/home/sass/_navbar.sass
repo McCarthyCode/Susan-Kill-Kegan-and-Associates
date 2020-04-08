@@ -4,19 +4,20 @@
   grid-row: title-bottom / nav-bottom
   background-color: $mid-gray
   height: 56px
+  box-shadow: -4px 4px 8px $darker-gray
 
   #navbarMenuButton
     border: none
     color: $white
     background-color: transparent
-    // @include transition(color, .5s)
+    @include transition(color, .5s)
     cursor: pointer
 
     .fa-bars
       vertical-align: -8px
 
   #navbarMenuButton:hover
-    color: $white !important
+    color: $purple !important
 
   #navbarCollapse
     display: none
@@ -26,7 +27,6 @@
     left: 0
     background-color: $darker-gray
     padding: 0 .5rem .5rem .5rem
-    max-height: calc(100vh - 69px)
     overflow-y: auto
     z-index: 3
 
@@ -35,8 +35,6 @@
 
       .nav-item
         margin-top: .5rem
-
-      .nav-item
         text-align: center
 
         a.nav-link
@@ -62,7 +60,7 @@
             vertical-align: middle
             color: $white !important
             background-color: transparent
-            // @include transition(color, .5s)
+            @include transition(color, .5s)
 
           a.nav-link:hover
-            color: $white !important
+            color: $purple !important

@@ -205,18 +205,21 @@ form .errorlist {
   grid-row: title-bottom/nav-bottom;
   background-color: #555555;
   height: 56px;
+  box-shadow: -4px 4px 8px #1e1e1e;
 }
 #navbar #navbarMenuButton {
   border: none;
   color: #ffffff;
   background-color: transparent;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
   cursor: pointer;
 }
 #navbar #navbarMenuButton .fa-bars {
   vertical-align: -8px;
 }
 #navbar #navbarMenuButton:hover {
-  color: #ffffff !important;
+  color: #d4afff !important;
 }
 #navbar #navbarCollapse {
   display: none;
@@ -226,7 +229,6 @@ form .errorlist {
   left: 0;
   background-color: #1e1e1e;
   padding: 0 0.5rem 0.5rem 0.5rem;
-  max-height: calc(100vh - 69px);
   overflow-y: auto;
   z-index: 3;
 }
@@ -235,8 +237,6 @@ form .errorlist {
 }
 #navbar #navbarCollapse ul .nav-item {
   margin-top: 0.5rem;
-}
-#navbar #navbarCollapse ul .nav-item {
   text-align: center;
 }
 #navbar #navbarCollapse ul .nav-item a.nav-link {
@@ -260,9 +260,11 @@ form .errorlist {
     vertical-align: middle;
     color: #ffffff !important;
     background-color: transparent;
+    -webkit-transition: color 0.5s;
+    transition: color 0.5s;
   }
   #navbar #navbarCollapse ul .nav-item a.nav-link:hover {
-    color: #ffffff !important;
+    color: #d4afff !important;
   }
 }
 #carousel {

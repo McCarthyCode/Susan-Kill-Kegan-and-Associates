@@ -17,8 +17,7 @@
   transform: $properties
 
 @mixin linear-gradient($direction, $colors...)
-  background: -webkit-linear-gradient($direction, $colors)
-  background: -moz-linear-gradient($direction, $colors)
-  background: -ms-linear-gradient($direction, $colors)
-  background: -o-linear-gradient($direction, $colors)
-  background: linear-gradient($direction, $colors)
+  background-image: -webkit-linear-gradient($direction, $colors...)
+  background-image: -moz-linear-gradient($direction, $colors...)
+  background-image: -o-linear-gradient($direction, $colors...)
+  background-image: linear-gradient($direction, $colors...)
