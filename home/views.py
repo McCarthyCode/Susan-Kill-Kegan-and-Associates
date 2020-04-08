@@ -97,6 +97,9 @@ def carousel_reorder(request):
     return HttpResponse(status=200)
 
 def carousel_delete(request, img_id):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
     img = get_object_or_404(CarouselImage, id=img_id)
     img.delete()
 
