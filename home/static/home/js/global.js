@@ -13,7 +13,7 @@ $(document).ready(() => {
     const height = $('#title .container').outerHeight();
 
     $('#grid').css({
-      'grid-template-rows': `[top] ${height}px [title-bottom] 56px [nav-bottom] auto [bottom]`,
+      'grid-template-rows': `[top] ${height}px [title-bottom] auto [bottom]`,
     });
   }
 

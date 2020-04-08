@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans&display=swap");
 #grid {
   display: grid;
-  grid-template-rows: [top] auto [title-bottom] 56px [nav-bottom] auto [bottom];
+  grid-template-rows: [top] auto [title-bottom] auto [bottom];
   height: 100vh;
 }
 
@@ -408,6 +408,7 @@ form .errorlist {
   margin: 0 auto 1rem auto;
   border: 0.25rem solid #818181;
   display: flex;
+  max-width: 100%;
 }
 
 /*# sourceMappingURL=home.css.map */
