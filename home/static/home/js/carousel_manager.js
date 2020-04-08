@@ -44,7 +44,7 @@ $(document).ready(() => {
     });
 
     $.ajax('/carousel/reorder/', {
-      'data': {'order': order},
+      'data': {'order': JSON.stringify(order)},
       'success': function (data) {
         window.location.reload(false);
       },

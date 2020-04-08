@@ -59,8 +59,8 @@ p, a, li, address {
   color: #ffffff;
 }
 
-a:not(.btn), .fa-external-link-alt {
-  color: #00ffff !important;
+a:not(.btn):not(.close), .fa-external-link-alt {
+  color: aqua;
 }
 
 .btn {
@@ -185,22 +185,19 @@ form .errorlist {
     border-bottom-left-radius: 0;
   }
 }
-.alert p {
+.container .alert p {
   margin: 0;
 }
-.alert a:not(.close) {
+.container .alert a:not(.close) {
   text-decoration: underline;
 }
-
-.alert-danger p, .alert-danger a {
+.container .alert-danger p, .container .alert-danger a {
   color: #721c24;
 }
-
-.alert-success p, .alert-success a {
+.container .alert-success p, .container .alert-success a {
   color: #155724;
 }
-
-.alert-info p, .alert-info a {
+.container .alert-info p, .container .alert-info a {
   color: #0c5460;
 }
 
@@ -378,7 +375,7 @@ form .errorlist {
   line-height: 1.2;
 }
 #footer a {
-  color: #00ffff;
+  color: aqua;
 }
 #footer p, #footer a {
   font-family: "Open Sans", sans-serif;

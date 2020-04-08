@@ -7,6 +7,7 @@ urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     re_path(r'^carousel/$', views.carousel_manager, name='carousel'),
     re_path(r'^carousel/upload/', views.carousel_upload, name='carousel-upload'),
+    re_path(r'^carousel/reorder/', views.carousel_reorder, name='carousel-reorder'),
 ]
 
 if DEBUG:

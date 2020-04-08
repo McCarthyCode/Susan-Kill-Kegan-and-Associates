@@ -1,7 +1,13 @@
+import json
+
 from datetime import datetime
 
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import (
+    HttpResponse,
+    HttpResponseBadRequest,
+    HttpResponseNotFound,
+)
 from django.shortcuts import render, redirect
 
 from .forms import CarouselForm
@@ -22,7 +28,7 @@ def handler500(request, exception=None):
 
 def index(request):
     return render(request, 'home/index.html', {
-        'images': CarouselImage.objects.all().order_by('-date_updated'),
+        'images': CarouselImage.objects.all().order_by('date_updated'),
         'year': datetime.now(TZ).year,
         'name': NAME,
     })
@@ -32,7 +38,7 @@ def carousel_manager(request):
         return HttpResponseBadRequest()
 
     return render(request, 'home/carousel_manager.html', {
-        'images': CarouselImage.objects.all().order_by('-date_updated'),
+        'images': CarouselImage.objects.all().order_by('date_updated'),
         'year': datetime.now(TZ).year,
         'name': NAME,
     })
@@ -61,3 +67,26 @@ def carousel_upload(request):
         return redirect('home:carousel-upload')
 
     return HttpResponseBadRequest()
+
+def carousel_reorder(request):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    # retrieve lists
+    order = json.loads(request.GET.get('order'))
+    images = CarouselImage.objects.all()
+
+    # validate input
+    for img in images:
+        if img.id not in order:
+            messages.error(request, 'There was an error reordering the carousel images. At least one of the images specified could not be found.')
+
+            return HttpResponseNotFound()
+
+    # touch images in order
+    for img_id in order:
+        CarouselImage.objects.get(id=img_id).save()
+
+    messages.success(request, 'You have successfully reordered the carousel images. <a href="%s">Click here</a> to see the updated carousel.' % reverse('home:index'), extra_tags='safe')
+
+    return HttpResponse(status=200)
