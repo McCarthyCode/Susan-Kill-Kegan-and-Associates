@@ -26,7 +26,7 @@
         </a>
       </div>
       <div class="btn-container">
-        <a href="{# url 'home:delete-carousel-image' forloop.counter0 #}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'home:carousel-delete' img.id %}" class="btn btn-danger">Delete</a>
       </div>
     </li>
     {% endfor %}

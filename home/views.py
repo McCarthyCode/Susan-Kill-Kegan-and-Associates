@@ -8,7 +8,12 @@ from django.http import (
     HttpResponseBadRequest,
     HttpResponseNotFound,
 )
-from django.shortcuts import render, redirect
+from django.shortcuts import (
+    redirect,
+    render,
+    get_object_or_404,
+)
+from django.urls import reverse
 
 from .forms import CarouselForm
 from .models import CarouselImage
@@ -90,3 +95,11 @@ def carousel_reorder(request):
     messages.success(request, 'You have successfully reordered the carousel images. <a href="%s">Click here</a> to see the updated carousel.' % reverse('home:index'), extra_tags='safe')
 
     return HttpResponse(status=200)
+
+def carousel_delete(request, img_id):
+    img = get_object_or_404(CarouselImage, id=img_id)
+    img.delete()
+
+    messages.success(request, 'You have successfully deleted the carousel image.')
+
+    return redirect('home:carousel')
