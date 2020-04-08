@@ -106,3 +106,12 @@ def carousel_delete(request, img_id):
     messages.success(request, 'You have successfully deleted the carousel image.')
 
     return redirect('home:carousel')
+
+def about(request):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    return render(request, 'home/about.html', {
+        'year': datetime.now(TZ).year,
+        'name': NAME,
+    })

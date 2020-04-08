@@ -9,6 +9,7 @@ urlpatterns = [
     re_path(r'^carousel/upload/', views.carousel_upload, name='carousel-upload'),
     re_path(r'^carousel/reorder/', views.carousel_reorder, name='carousel-reorder'),
     re_path(r'^carousel/delete/(?P<img_id>[1-9]\d*)/', views.carousel_delete, name='carousel-delete'),
+    re_path(r'^about/', views.about, name='about'),
 ]
 
 if DEBUG:

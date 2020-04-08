@@ -343,7 +343,7 @@ form .errorlist {
 }
 #imageList li .img-container a img, #imageList li .img-container button img, #imageList li .img-container input[type=submit] img, #imageList li .btn-container a img, #imageList li .btn-container button img, #imageList li .btn-container input[type=submit] img {
   box-sizing: border-box;
-  border: 4px solid #818181;
+  border: 0.25rem solid #818181;
 }
 #imageList li .img-container .inactive, #imageList li .btn-container .inactive {
   opacity: 50;
@@ -402,6 +402,12 @@ form .errorlist {
   padding: 0 0.5rem;
   text-align: center;
   border-left: 1px solid white;
+}
+
+.container img {
+  margin: 0 auto 1rem auto;
+  border: 0.25rem solid #818181;
+  display: flex;
 }
 
 /*# sourceMappingURL=home.css.map */
