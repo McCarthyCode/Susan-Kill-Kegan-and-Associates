@@ -2,23 +2,23 @@
 {% block content %}
 <section class="container">
   {% include 'home/messages.html' %}
-  <h3 class="h3 text-center">Upload Carousel Image</h3>
+  <h3 class="h3 text-center">Upload Carousel Images</h3>
   <form id="carouselUpload" action="{% url 'home:carousel-upload' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="text-center">
-      {{ form.images }}
-    </div>
     <ul id="btnList" class="text-center">
       <li>
         <a class="btn btn-secondary" href="{% url 'home:index' %}">Back to Home Page</a>
       </li>
       <li>
-        <a class="btn btn-secondary" href="{% url 'home:carousel' %}">Back to Carousel Page</a>
+        <a class="btn btn-secondary" href="{% url 'home:carousel' %}">Back to Carousel Manager</a>
       </li>
       <li>
         <input class="btn btn-primary" type="submit" value="Upload">
       </li>
     </ul>
+    <div class="text-center">
+      {{ form.images }}
+    </div>
   </form>
 </section>
 {% endblock %}
