@@ -62,28 +62,16 @@
       i:hover
         color: $light-gray
 
-    .img-container, .btn-container
+    .btn-container
       position: relative
+      width: 75px
+      height: 108px
 
-      a, button, input[type="submit"]
+      .btn
         position: absolute
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-
-        img
-          box-sizing: border-box
-          border: .25rem solid $light-gray
-
-      .inactive
-        opacity: 50
-
-    .img-container
-      height: 108px
-      width: 100px
-
-    .btn-container
-      width: 75px
 
   li:first-child .controls i:first-child,
   li:last-child .controls i:last-child

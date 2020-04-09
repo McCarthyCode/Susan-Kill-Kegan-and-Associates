@@ -1,0 +1,26 @@
+{% extends 'gallery/base.html' %}
+{% block content %}
+<section class="container">
+  <ul id="btnList" class="text-center">
+    <li>
+      <a href="{# url 'gallery:manager' #}" class="btn btn-secondary">Gallery Manager</a>
+    </li>
+  </ul>
+  {% for category in images_by_category %}
+  {% if category.images %}
+  <h3 class="h3 text-center">{{ category.name }}</h3>
+    <ul class="category-list">
+    {% for img in category.images %}
+      <li class="thumbnail-container">
+        <a data-fancybox="gallery" href="{{ img.image.url }}">
+          <img src="{{ img.thumbnail.url }}">
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% empty %}
+  <p class="empty">There are no images to show at this time.</p>
+  {% endfor %}
+</section>
+{% endblock %}

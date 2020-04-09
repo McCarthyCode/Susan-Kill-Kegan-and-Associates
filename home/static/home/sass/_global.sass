@@ -55,3 +55,24 @@ a:not(.btn):not(.close), .fa-external-link-alt
 .fa-external-link-alt
   font-size: .5em
   vertical-align: 1px
+
+.thumbnail-container
+  position: relative
+  width: 108px
+  height: 108px
+
+  a
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    img
+      max-width: 100px
+      max-height: 100px
+      border: .25rem solid $light-gray
+
+.empty
+  color: $light-gray
+  text-align: center
+  font-style: italic
