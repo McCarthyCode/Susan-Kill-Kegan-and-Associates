@@ -7,6 +7,7 @@ from io import BytesIO
 from PIL import Image
 
 from django.db import models
+from django.db.models.signals import pre_init
 
 from skka.settings import TZ, MEDIA_ROOT
 
@@ -21,26 +22,35 @@ class TimestampedModel(models.Model):
     class Meta:
         abstract = True
 
-class CarouselImage(TimestampedModel):
-    RELATIVE_PATH = 'carousel/'
-    image = models.ImageField(blank=True, null=True, default=None, upload_to=RELATIVE_PATH)
+class ThumbnailedImage(TimestampedModel):
+    image = models.ImageField(blank=True, null=True, default=None, upload_to='')
     _image_hash = models.BinaryField(editable=False, null=True, default=None, max_length=16)
-    thumbnail = models.ImageField(blank=True, null=True, default=None, upload_to=RELATIVE_PATH)
+    thumbnail = models.ImageField(blank=True, null=True, default=None, upload_to='')
     _thumbnail_hash = models.BinaryField(editable=False, null=True, default=None, max_length=16)
+
+    @classmethod
+    def create(cls, *args, **kwargs):
+        image = cls(**kwargs)
+        image.image_ops()
+
+        return image
 
     def __str__(self):
         return self.image.name
 
-    def image_ops(self):
-        self.generate_thumbnail()
-        self.hash_thumbnail()
-        self.resize_image()
-        self.hash_image()
+    def image_ops(
+        self, relative_path='', max_size=(960, 720),
+        thumbnail_size=(100, 100),
+    ):
+        self._generate_thumbnail(relative_path, thumbnail_size)
+        self._hash_thumbnail(relative_path)
+        self._resize_image(relative_path, max_size)
+        self._hash_image(relative_path)
 
-    def generate_thumbnail(self):
+    def _generate_thumbnail(self, relative_path, thumbnail_size):
         img = Image.open(self.image).convert('RGB')
         width, height = img.size
-        max_longest, max_shortest = 100, 100
+        max_longest, max_shortest = thumbnail_size
 
         if not self.thumbnail and (width >= height and (width > max_longest or height > max_shortest)) or (height > width and (height > max_longest or width > max_shortest)):
             if width > height:
@@ -63,10 +73,10 @@ class CarouselImage(TimestampedModel):
         img_file = BytesIO()
         img.save(img_file, 'JPEG', quality=90)
 
-        new_name = 'thumbnail_' + self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
+        new_name = 'thumbnail_' + self.image.name.split('.')[0].replace(relative_path, '') + '.jpg'
         self.thumbnail.save(new_name, img_file)
 
-    def hash_thumbnail(self, block_size=65536):
+    def _hash_thumbnail(self, relative_path, block_size=65536):
         hasher = hashlib.md5()
         filename = MEDIA_ROOT + '/' + self.thumbnail.name
 
@@ -76,14 +86,14 @@ class CarouselImage(TimestampedModel):
 
             if not self.thumbnail_hash or self.thumbnail_hash != hasher.hexdigest().lower():
                 self._thumbnail_hash = hasher.digest()
-                self.thumbnail.name = self.RELATIVE_PATH + hasher.hexdigest().lower() + '.jpg'
+                self.thumbnail.name = relative_path + hasher.hexdigest().lower() + '.jpg'
                 new_filename = MEDIA_ROOT + '/' + self.thumbnail.name
                 os.rename(filename, new_filename)
 
-    def resize_image(self):
+    def _resize_image(self, relative_path, max_size):
         img = Image.open(self.image).convert('RGB')
         width, height = img.size
-        max_width, max_height = 800, 600
+        max_width, max_height = max_size
 
         if (width >= height and (width > max_width or height > max_height)) or (height > width and (height > max_height or width > max_width)):
             if width > height:
@@ -106,11 +116,11 @@ class CarouselImage(TimestampedModel):
         img_file = BytesIO()
         img.save(img_file, 'JPEG', quality=90)
 
-        new_name = self.image.name.split('.')[0].replace(self.RELATIVE_PATH, '') + '.jpg'
+        new_name = self.image.name.split('.')[0].replace(relative_path, '') + '.jpg'
         self.image.delete()
         self.image.save(new_name, img_file)
 
-    def hash_image(self, block_size=65536):
+    def _hash_image(self, relative_path, block_size=65536):
         hasher = hashlib.md5()
         filename = MEDIA_ROOT + '/' + self.image.name
 
@@ -120,7 +130,7 @@ class CarouselImage(TimestampedModel):
 
             if not self.image_hash or self.image_hash != hasher.hexdigest().lower():
                 self._image_hash = hasher.digest()
-                self.image.name = self.RELATIVE_PATH + hasher.hexdigest().lower() + '.jpg'
+                self.image.name = relative_path + hasher.hexdigest().lower() + '.jpg'
                 new_filename = MEDIA_ROOT + '/' + self.image.name
                 os.rename(filename, new_filename)
 
@@ -131,3 +141,13 @@ class CarouselImage(TimestampedModel):
     @property
     def thumbnail_hash(self):
         return str(b16encode(self._thumbnail_hash).lower(), 'utf-8') if self._thumbnail_hash else None
+
+    class Meta:
+        abstract = True
+
+class CarouselImage(ThumbnailedImage):
+    image = models.ImageField(blank=True, null=True, default=None, upload_to='carousel/')
+    thumbnail = models.ImageField(blank=True, null=True, default=None, upload_to='carousel/')
+
+    def image_ops(self):
+        super().image_ops(relative_path='carousel/', max_size=(800, 600))

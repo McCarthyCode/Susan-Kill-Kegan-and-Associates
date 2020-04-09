@@ -61,8 +61,7 @@ def carousel_upload(request):
         if form.is_valid():
             images = request.FILES.getlist('images')
             for img in images:
-                image = CarouselImage(image=img)
-                image.image_ops()
+                image = CarouselImage.create(image=img)
                 image.save()
 
             images_len = len(images)
