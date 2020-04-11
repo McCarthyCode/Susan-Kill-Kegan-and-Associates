@@ -1,3 +1,12 @@
+@import '_fonts'
+@import '_variables'
+@import '_mixins'
+
+@import '_forms'
+@import '_messages'
+@import '_navbar'
+@import '_footer'
+
 #grid
   display: grid
   grid-template-rows: [top] auto [title-bottom] auto [bottom]
@@ -46,7 +55,7 @@ p, a, li, address
   font-family: $open-sans
   color: $white
 
-a:not(.btn):not(.close), .fa-external-link-alt
+a:not(.btn):not(.close), .fa-external-link-alt, :not(.alert > p > a)
   color: $aqua
 
 .btn

@@ -1,100 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans&display=swap");
-#grid {
-  display: grid;
-  grid-template-rows: [top] auto [title-bottom] auto [bottom];
-  height: 100vh;
-}
-
-#title .container, #content .container {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-#content .container {
-  max-width: 800px;
-}
-
-#title {
-  grid-row: top/title-bottom;
-  background-color: #87806d;
-  background-image: url("/static/home/img/pavement.jpg");
-}
-#title h1.h1, #title h4.h4 {
-  text-shadow: -2px 2px 8px #000000;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-#title h1.h1 {
-  color: #faf9b2;
-}
-#title h4.h4 {
-  color: #ffffff;
-}
-#title h4.h4 .bullet {
-  color: #d4afff;
-}
-
-#content {
-  grid-row: nav-bottom/bottom;
-  background-color: #1e1e1e;
-}
-
-h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6 {
-  font-family: "Bree Serif", serif;
-}
-
-h1.h1, h2.h2, h5.h5, h6.h6 {
-  color: #faf9b2;
-}
-
-h3.h3, h4.h4 {
-  color: #f8a572;
-}
-
-p, a, li, address {
-  font-family: "Open Sans", sans-serif;
-  color: #ffffff;
-}
-
-a:not(.btn):not(.close), .fa-external-link-alt {
-  color: aqua;
-}
-
-.btn {
-  font-weight: bold;
-}
-
-.fa-external-link-alt {
-  font-size: 0.5em;
-  vertical-align: 1px;
-}
-
-.thumbnail-container {
-  position: relative;
-  width: 108px;
-  height: 108px;
-}
-.thumbnail-container a {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.thumbnail-container a img {
-  max-width: 100px;
-  max-height: 100px;
-  border: 0.25rem solid #818181;
-}
-
-.empty {
-  color: #818181;
-  text-align: center;
-  font-style: italic;
-}
-
 form input[type=text], form input[type=number], form input[type=password], form input[type=submit], form input[type=file], form textarea, form select, form label {
   margin-bottom: 0.5rem;
 }
@@ -290,89 +194,6 @@ form .errorlist {
     color: #d4afff !important;
   }
 }
-#carousel {
-  background-color: #000000;
-  background-image: radial-gradient(circle, #000000, #645379);
-}
-#carousel .carousel-inner {
-  width: 100%;
-  min-height: 259.5px;
-  max-height: 600px;
-  margin: 0 auto;
-}
-#carousel .carousel-inner .carousel-item {
-  max-height: 600px;
-}
-#carousel .carousel-inner .carousel-item img {
-  max-width: 800px;
-  max-height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#carousel .carousel-control-prev-icon,
-#carousel .carousel-control-next-icon {
-  fill: #faf9b2;
-}
-
-#btnList {
-  margin-bottom: 0.25rem;
-}
-#btnList li {
-  display: inline-block;
-  margin-bottom: 0.25rem;
-}
-#btnList li > * {
-  margin-bottom: 0;
-}
-
-#carouselUpload input[type=file] {
-  width: 400px;
-}
-
-#imageList {
-  padding: 0;
-}
-#imageList li {
-  list-style: none;
-  display: flex;
-  position: relative;
-  background-color: #555555;
-  width: 100%;
-  min-width: 290px;
-  max-width: 400px;
-  border-radius: 0.25rem;
-  margin: 0 auto 0.5rem auto;
-  padding: 0.5rem 1rem;
-  justify-content: space-between;
-}
-#imageList li .controls i {
-  display: block;
-  cursor: pointer;
-  line-height: 54px;
-  -webkit-transition: color 0.15s;
-  transition: color 0.15s;
-}
-#imageList li .controls i:hover {
-  color: #818181;
-}
-#imageList li .btn-container {
-  position: relative;
-  width: 75px;
-  height: 108px;
-}
-#imageList li .btn-container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#imageList li:first-child .controls i:first-child,
-#imageList li:last-child .controls i:last-child {
-  visibility: hidden;
-}
-
 #footer {
   padding: 0.75rem;
   background-color: #555555;
@@ -415,6 +236,185 @@ form .errorlist {
   padding: 0 0.5rem;
   text-align: center;
   border-left: 1px solid white;
+}
+
+#grid {
+  display: grid;
+  grid-template-rows: [top] auto [title-bottom] auto [bottom];
+  height: 100vh;
+}
+
+#title .container, #content .container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+#content .container {
+  max-width: 800px;
+}
+
+#title {
+  grid-row: top/title-bottom;
+  background-color: #87806d;
+  background-image: url("/static/home/img/pavement.jpg");
+}
+#title h1.h1, #title h4.h4 {
+  text-shadow: -2px 2px 8px #000000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+#title h1.h1 {
+  color: #faf9b2;
+}
+#title h4.h4 {
+  color: #ffffff;
+}
+#title h4.h4 .bullet {
+  color: #d4afff;
+}
+
+#content {
+  grid-row: nav-bottom/bottom;
+  background-color: #1e1e1e;
+}
+
+h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6 {
+  font-family: "Bree Serif", serif;
+}
+
+h1.h1, h2.h2, h5.h5, h6.h6 {
+  color: #faf9b2;
+}
+
+h3.h3, h4.h4 {
+  color: #f8a572;
+}
+
+p, a, li, address {
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+}
+
+a:not(.btn):not(.close), .fa-external-link-alt, :not(.alert > p > a) {
+  color: aqua;
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.fa-external-link-alt {
+  font-size: 0.5em;
+  vertical-align: 1px;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 108px;
+  height: 108px;
+}
+.thumbnail-container a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.thumbnail-container a img {
+  max-width: 100px;
+  max-height: 100px;
+  border: 0.25rem solid #818181;
+}
+
+.empty {
+  color: #818181;
+  text-align: center;
+  font-style: italic;
+}
+
+#carousel {
+  background-color: #000000;
+  background-image: radial-gradient(circle, #000000, #645379);
+}
+#carousel .carousel-inner {
+  width: 100%;
+  min-height: 259.5px;
+  max-height: 600px;
+  margin: 0 auto;
+}
+#carousel .carousel-inner .carousel-item {
+  max-height: 600px;
+}
+#carousel .carousel-inner .carousel-item img {
+  max-width: 800px;
+  max-height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#carousel .carousel-control-prev-icon,
+#carousel .carousel-control-next-icon {
+  fill: #faf9b2;
+}
+
+#btnList {
+  margin-bottom: 0.25rem;
+}
+#btnList li {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+#btnList li > * {
+  margin-bottom: 0;
+}
+
+#carouselUpload input[type=file] {
+  width: 400px;
+}
+
+.image-list {
+  padding: 0;
+}
+.image-list li {
+  list-style: none;
+  display: flex;
+  position: relative;
+  background-color: #555555;
+  width: 100%;
+  min-width: 290px;
+  max-width: 400px;
+  border-radius: 0.25rem;
+  margin: 0 auto 0.5rem auto;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+}
+.image-list li .controls i {
+  display: block;
+  cursor: pointer;
+  line-height: 54px;
+  -webkit-transition: color 0.15s;
+  transition: color 0.15s;
+}
+.image-list li .controls i:hover {
+  color: #818181;
+}
+.image-list li .btn-container {
+  position: relative;
+  width: 75px;
+  height: 108px;
+}
+.image-list li .btn-container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.image-list li:first-child .controls i:first-child,
+.image-list li:last-child .controls i:last-child {
+  visibility: hidden;
 }
 
 .block-image {

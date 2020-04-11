@@ -1,7 +1,7 @@
 $(document).ready(() => {
   // reorder images
-  let $up = $('#imageList .controls :first-child');
-  let $down = $('#imageList .controls :last-child');
+  let $up = $('.image-list .controls :first-child');
+  let $down = $('.image-list .controls :last-child');
 
   $up.click(function () {
     let $li = $(this).parents('li');
@@ -39,7 +39,7 @@ $(document).ready(() => {
   $('#submit').click(function () {
     let order = [];
 
-    $('#imageList li').each(function () {
+    $('.image-list li').each(function () {
       order.push($(this).data('id'));
     });
 
