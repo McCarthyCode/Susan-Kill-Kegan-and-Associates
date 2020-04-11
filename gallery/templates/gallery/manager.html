@@ -3,13 +3,13 @@
 <section class="container">
   <ul id="btnList" class="text-center">
     <li>
-      <a href="{% url 'gallery:manager' %}" class="btn btn-secondary">Gallery Manager</a>
+      <a href="{% url 'gallery:index' %}" class="btn btn-secondary">Back to Gallery</a>
     </li>
   </ul>
   {% for category in images_by_category %}
   {% if category.images %}
   <h3 class="h3 text-center">{{ category.name }}</h3>
-  <ul class="gallery-list">
+  <ul class="gallery-list" data-id="{{ category.id }}">
   {% for img in category.images %}
     <li class="thumbnail-container">
       <a data-fancybox="gallery" href="{{ img.image.url }}">
