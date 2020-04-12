@@ -118,13 +118,22 @@ form .errorlist {
 .container .alert a:not(.close) {
   text-decoration: underline;
 }
-.container .alert-danger p, .container .alert-danger a {
+.container .alert-danger p {
   color: #721c24;
 }
-.container .alert-success p, .container .alert-success a {
+.container .alert-danger p a {
+  color: #721c24;
+}
+.container .alert-success p {
   color: #155724;
 }
-.container .alert-info p, .container .alert-info a {
+.container .alert-success p a {
+  color: #155724;
+}
+.container .alert-info p {
+  color: #0c5460;
+}
+.container .alert-info p a {
   color: #0c5460;
 }
 
@@ -298,7 +307,8 @@ p, a, li, address {
   color: #ffffff;
 }
 
-a:not(.btn):not(.close), .fa-external-link-alt, :not(.alert > p > a) {
+a:not(.btn):not(.close),
+.fa-external-link-alt {
   color: aqua;
 }
 
