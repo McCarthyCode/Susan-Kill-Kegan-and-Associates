@@ -364,6 +364,7 @@ a:not(.btn):not(.close),
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: -4px 4px 8px #1e1e1e;
 }
 #carousel .carousel-control-prev-icon,
 #carousel .carousel-control-next-icon {
