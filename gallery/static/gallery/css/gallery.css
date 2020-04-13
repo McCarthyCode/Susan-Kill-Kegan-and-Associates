@@ -312,8 +312,15 @@ a:not(.btn):not(.close),
   color: aqua;
 }
 
-.btn {
-  font-weight: bold;
+#btnList {
+  margin-bottom: 0.25rem;
+}
+#btnList li {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+#btnList li > * {
+  margin-bottom: 0;
 }
 
 .fa-external-link-alt {
