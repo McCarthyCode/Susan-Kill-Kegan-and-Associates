@@ -15,8 +15,8 @@ form select.form-control,
 form select.form-control:focus {
   padding: 0 0.5rem;
   color: #ffffff;
-  border-color: #6c757d;
-  background-color: #6c757d;
+  border-color: #555555;
+  background-color: #555555;
 }
 form select.form-control option,
 form select.form-control:focus option {
@@ -326,6 +326,14 @@ a:not(.btn):not(.close),
 }
 #btnList li > * {
   margin-bottom: 0;
+}
+#btnList li .btn-secondary {
+  background-color: #555555;
+  border-color: #555555;
+}
+#btnList li .btn-secondary:hover {
+  background-color: #444;
+  border-color: #444;
 }
 
 .fa-external-link-alt {
