@@ -4,6 +4,9 @@
 
 - Gallery page
 - Gallery manager
-  - Upload
   - Reorder
   - Delete
+
+# Medium Priorities
+
+- Titles/buttons

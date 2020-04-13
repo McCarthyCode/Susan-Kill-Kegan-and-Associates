@@ -14,12 +14,12 @@ class GalleryImage(ThumbnailedImage):
     category = models.PositiveSmallIntegerField(choices=CATEGORY_CHOICES)
 
     def relative_path(instance, filename):
-        return 'gallery/%s/%s' % instance.category[1].lower(), filename
+        return 'gallery/%s/%s' % (instance.CATEGORY_CHOICES[instance.category][1].lower(), filename)
 
     image = models.ImageField(blank=True, null=True, default=None, upload_to=relative_path)
     thumbnail = models.ImageField(blank=True, null=True, default=None, upload_to=relative_path)
 
     def image_ops(self):
         super().image_ops(
-            relative_path=relative_path(self, ''), max_size=(800, 600)
+            relative_path=self.relative_path(''), max_size=(800, 600)
         )

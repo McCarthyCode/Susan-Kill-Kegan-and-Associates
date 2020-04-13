@@ -65,7 +65,7 @@ def carousel_upload(request):
                 image.save()
 
             images_len = len(images)
-            messages.success(request, 'You have successfully added %d image%s to the carousel.' % (images_len, '' if images_len == 1 else 's'))
+            messages.success(request, 'You have successfully added %d image%s to the carousel. <a href="%s">Click here</a> to see the updated carousel.' % (images_len, '' if images_len == 1 else 's', reverse('home:index')), extra_tags='safe')
 
             return redirect('home:carousel-upload')
 

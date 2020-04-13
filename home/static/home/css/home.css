@@ -11,10 +11,15 @@ form textarea, form select, form label {
 form label.form-control {
   cursor: pointer;
 }
-form select.form-control {
+form select.form-control,
+form select.form-control:focus {
   padding: 0 0.5rem;
+  color: #ffffff;
+  border-color: #6c757d;
+  background-color: #6c757d;
 }
-form select.form-control option {
+form select.form-control option,
+form select.form-control:focus option {
   padding: 0;
 }
 form input[type=file] {
@@ -343,12 +348,25 @@ a:not(.btn):not(.close),
   max-width: 100px;
   max-height: 100px;
   border: 0.25rem solid #818181;
+  box-sizing: unset;
 }
 
 .empty {
   color: #818181;
   text-align: center;
   font-style: italic;
+}
+
+.max-width-436 {
+  max-width: 436px;
+}
+
+.max-width-484 {
+  max-width: 484px;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
 }
 
 #carousel {
@@ -376,10 +394,6 @@ a:not(.btn):not(.close),
 #carousel .carousel-control-prev-icon,
 #carousel .carousel-control-next-icon {
   fill: #faf9b2;
-}
-
-#carouselUpload input[type=file] {
-  width: 400px;
 }
 
 .image-list {

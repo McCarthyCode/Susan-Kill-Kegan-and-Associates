@@ -5,6 +5,12 @@
     <li>
       <a href="{% url 'gallery:index' %}" class="btn btn-secondary">Back to Gallery</a>
     </li>
+    <li>
+      <a href="{% url 'gallery:upload' %}" class="btn btn-secondary">Upload Images</a>
+    </li>
+    <li>
+      <button id="submit" class="btn btn-primary">Save Changes</button>
+    </li>
   </ul>
   {% for category in images_by_category %}
   {% if category.images %}

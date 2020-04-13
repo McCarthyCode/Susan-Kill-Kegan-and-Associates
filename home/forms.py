@@ -4,7 +4,7 @@ from .models import CarouselImage
 
 class CarouselForm(forms.ModelForm):
     images = forms.ImageField(
-        label='Image',
+        label='Images',
         widget=forms.ClearableFileInput(attrs={'multiple': True}),
     )
 

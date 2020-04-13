@@ -1,0 +1,24 @@
+{% extends 'gallery/base.html' %}
+{% block content %}
+<section class="container">
+  {% include 'home/messages.html' %}
+  <form id="galleryUpload" action="{% url 'gallery:upload' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <ul id="btnList" class="text-center">
+      <li>
+        <a href="{% url 'gallery:index' %}" class="btn btn-secondary">Back to Gallery</a>
+      </li>
+      <li>
+        <a href="{% url 'gallery:manager' %}" class="btn btn-secondary">Back to Gallery Manager</a>
+      </li>
+      <li>
+        <input class="btn btn-primary" type="submit" value="Upload">
+      </li>
+    </ul>
+    <div class="max-width-436 margin-0-auto text-center">
+      {{ form.category }}
+      {{ form.images }}
+    </div>
+  </form>
+</section>
+{% endblock %}
