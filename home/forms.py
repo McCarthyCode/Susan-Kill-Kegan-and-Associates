@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from .models import CarouselImage
 
-class UserForm(forms.ModelForm):
+class UserForm(forms.Form):
     username = forms.CharField(
         label='',
         max_length=150,
@@ -19,14 +19,6 @@ class UserForm(forms.ModelForm):
             'placeholder': 'Password',
         })
     )
-
-    def clean(self):
-        super().clean()
-        return self.cleaned_data
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
 
 class CarouselForm(forms.ModelForm):
     images = forms.ImageField(

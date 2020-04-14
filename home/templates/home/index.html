@@ -2,6 +2,7 @@
 {% block content %}
 {% include 'home/carousel.html' %}
 <section class="container">
+  {% include 'home/messages.html' %}
   <ul id="btnList" class="text-center">
     <li>
       <a href="{% url 'home:carousel' %}" class="btn btn-secondary">Carousel  Manager</a>

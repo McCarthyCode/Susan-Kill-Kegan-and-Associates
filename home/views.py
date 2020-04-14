@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 
 from django.contrib import messages
+from django.contrib.auth import authenticate, login as dj_login, logout as dj_logout
 from django.http import (
     HttpResponse,
     HttpResponseBadRequest,
@@ -46,9 +47,40 @@ def login(request):
             'name': NAME,
         })
     elif request.method == 'POST':
-        pass
+        form = UserForm(request.POST)
+
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
+            )
+
+            if user is None:
+                messages.error(request, 'The username/password combination you entered does not match any user in our database. Please try again.')
+
+                return redirect('home:login')
+
+            dj_login(request, user)
+
+            messages.success(request, 'Welcome back%s!' % (', %s' % user.first_name if user.first_name else ''))
+
+            return redirect('home:index')
+
+        messages.error(request, 'There was an error logging in. Please try again.')
+
+        return redirect('home:login')
 
     return HttpResponseBadRequest()
+
+def logout(request):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    dj_logout(request)
+
+    messages.success(request, 'You have successfully logged out. We hope to see you again soon!')
+
+    return redirect('home:index')
 
 def carousel_manager(request):
     if request.method != 'GET':
