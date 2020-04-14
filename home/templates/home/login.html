@@ -2,7 +2,7 @@
 {% block content %}
 <section class="container">
   {% include 'home/messages.html' %}
-  <h2 class="h2 text-center">Login</h2>
+  <h2 class="h2 text-center">Admin Login</h2>
   <form class="max-width-400 margin-0-auto" method="POST">
     {% csrf_token %}
     {{ form }}

@@ -1,6 +1,15 @@
 <footer id="footer">
   <div class="footer-list">
     <ul>
+      {% if request.user.is_authenticated %}
+      <li>
+        <a href="{% url 'home:logout' %}"><small>Log Out</small></a>
+      </li>
+      {% else %}
+      <li>
+        <a href="{% url 'home:login' %}"><small>Admin Login</small></a>
+      </li>
+      {% endif %}
       <li>
         <a class="external-link" href="https://github.com/mattmc318/Market-to-Market-Chicago"><small>GitHub</small></a>
       </li>

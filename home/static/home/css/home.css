@@ -237,7 +237,7 @@ form .errorlist {
   font-family: "Open Sans", sans-serif;
 }
 #footer .footer-list {
-  max-width: 14.5rem;
+  max-width: 10.5rem;
   position: relative;
   margin: auto;
   overflow: hidden;
@@ -260,6 +260,11 @@ form .errorlist {
   border-left: 1px solid white;
 }
 
+@media screen and (min-width: 347px) {
+  #footer .footer-list {
+    max-width: 20.5rem;
+  }
+}
 #grid {
   display: grid;
   grid-template-rows: [top] auto [title-bottom] auto [bottom];
