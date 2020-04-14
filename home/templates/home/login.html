@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+{% block content %}
+<section class="container">
+  <h2 class="h2 text-center">Login</h2>
+  <form class="max-width-400 margin-0-auto" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-primary form-control" type="submit">Login</button>
+  </form>
+</section>
+{% endblock %}

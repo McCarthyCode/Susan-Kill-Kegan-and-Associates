@@ -15,7 +15,7 @@ from django.shortcuts import (
 )
 from django.urls import reverse
 
-from .forms import CarouselForm
+from .forms import UserForm, CarouselForm
 from .models import CarouselImage
 from skka.settings import TZ, NAME
 
@@ -37,6 +37,18 @@ def index(request):
         'year': datetime.now(TZ).year,
         'name': NAME,
     })
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'home/login.html', {
+            'form': UserForm(),
+            'year': datetime.now(TZ).year,
+            'name': NAME,
+        })
+    elif request.method == 'POST':
+        pass
+
+    return HttpResponseBadRequest()
 
 def carousel_manager(request):
     if request.method != 'GET':
