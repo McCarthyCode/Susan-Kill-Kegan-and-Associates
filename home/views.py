@@ -41,6 +41,11 @@ def index(request):
 
 def login(request):
     if request.method == 'GET':
+        if request.user.is_authenticated:
+            messages.info(request, 'You have been redirected to the homepage as you are already logged in.')
+
+            return redirect('home:index')
+
         return render(request, 'home/login.html', {
             'form': UserForm(),
             'year': datetime.now(TZ).year,
@@ -83,7 +88,7 @@ def logout(request):
     return redirect('home:index')
 
 def carousel_manager(request):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     return render(request, 'home/carousel_manager.html', {
@@ -93,6 +98,9 @@ def carousel_manager(request):
     })
 
 def carousel_upload(request):
+    if not request.user.is_superuser:
+        return HttpResponseBadRequest()
+
     if request.method == 'GET':
         return render(request, 'home/carousel_upload.html', {
             'form': CarouselForm(),
@@ -120,11 +128,11 @@ def carousel_upload(request):
     return HttpResponseBadRequest()
 
 def carousel_reorder(request):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     # retrieve lists
-    order = json.loads(request.GET.get('order'))
+    order = json.loads(request.GET.get('order', '[]'))
     images = CarouselImage.objects.all()
 
     # validate input
@@ -143,7 +151,7 @@ def carousel_reorder(request):
     return HttpResponse(status=200)
 
 def carousel_delete(request, img_id):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     img = get_object_or_404(CarouselImage, id=img_id)

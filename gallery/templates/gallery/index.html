@@ -2,11 +2,13 @@
 {% block content %}
 <section class="container">
   <h2 class="h2 text-center">Gallery</h2>
+  {% if request.user.is_superuser %}
   <ul id="btnList" class="text-center">
     <li>
       <a href="{% url 'gallery:manager' %}" class="btn btn-secondary">Gallery Manager</a>
     </li>
   </ul>
+  {% endif %}
   {% for category in images_by_category %}
   {% if category.images %}
   <h3 class="h3 text-center">{{ category.name }}</h3>

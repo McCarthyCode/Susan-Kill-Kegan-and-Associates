@@ -41,7 +41,7 @@ def index(request):
     })
 
 def manager(request):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     images_by_category = []
@@ -62,6 +62,9 @@ def manager(request):
     })
 
 def upload(request):
+    if not request.user.is_superuser:
+        return HttpResponseBadRequest()
+
     if request.method == 'GET':
         return render(request, 'gallery/upload.html', {
             'form': GalleryForm(),
@@ -92,7 +95,7 @@ def upload(request):
     return HttpResponseBadRequest()
 
 def reorder(request):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     # retrieve lists
@@ -116,7 +119,7 @@ def reorder(request):
     return HttpResponse(status=200)
 
 def delete(request, img_id):
-    if request.method != 'GET':
+    if not (request.method == 'GET' and request.user.is_superuser):
         return HttpResponseBadRequest()
 
     img = get_object_or_404(GalleryImage, id=img_id)
