@@ -1,8 +1,19 @@
+import json
+
 from datetime import datetime
 
 from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.http import HttpResponseBadRequest
+from django.shortcuts import (
+    get_object_or_404,
+    redirect,
+    render,
+    reverse,
+)
+from django.http import (
+    HttpResponse,
+    HttpResponseBadRequest,
+    HttpResponseNotFound,
+)
 
 from .models import GalleryImage
 from .forms import GalleryForm
@@ -14,7 +25,7 @@ def index(request):
 
     images_by_category = []
     for category_id, name in GalleryImage.CATEGORY_CHOICES:
-        images = GalleryImage.objects.filter(category=category_id)
+        images = GalleryImage.objects.filter(category=category_id).order_by('date_updated')
 
         if images:
             images_by_category.append({
@@ -35,7 +46,7 @@ def manager(request):
 
     images_by_category = []
     for category_id, name in GalleryImage.CATEGORY_CHOICES:
-        images = GalleryImage.objects.filter(category=category_id)
+        images = GalleryImage.objects.filter(category=category_id).order_by('date_updated')
 
         if images:
             images_by_category.append({
@@ -79,3 +90,38 @@ def upload(request):
         return redirect('gallery:upload')
 
     return HttpResponseBadRequest()
+
+def reorder(request):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    # retrieve lists
+    orders = json.loads(request.GET.get('orders'))
+
+    # validate input
+    for category in orders:
+        for img in GalleryImage.objects.filter(category=category['id']):
+            if img.id not in category['order']:
+                messages.error(request, 'There was an error reordering the gallery images. At least one of the images specified could not be found.')
+
+                return HttpResponseNotFound()
+
+    # touch images in order
+    for category in orders:
+        for img_id in category['order']:
+            img = GalleryImage.objects.get(id=img_id).save()
+
+    messages.success(request, 'You have successfully reordered the gallery images. <a href="%s">Click here</a> to see the updated gallery.' % reverse('gallery:index'), extra_tags='safe')
+
+    return HttpResponse(status=200)
+
+def delete(request, img_id):
+    if request.method != 'GET':
+        return HttpResponseBadRequest()
+
+    img = get_object_or_404(GalleryImage, id=img_id)
+    img.delete()
+
+    messages.success(request, 'You have successfully deleted the gallery image.')
+
+    return redirect('gallery:manager')

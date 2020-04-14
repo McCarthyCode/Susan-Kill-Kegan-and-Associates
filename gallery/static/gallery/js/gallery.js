@@ -47,13 +47,13 @@ $(document).ready(() => {
       });
 
       orders.push({
-        'category_id': $(this).data('id'),
+        'id': $(this).data('id'),
         'order': order,
       })
     });
 
     $.ajax('/gallery/reorder/', {
-      'data': {'order': JSON.stringify(orders)},
+      'data': {'orders': JSON.stringify(orders)},
       'success': function (data) {
         window.location.reload(false);
       },

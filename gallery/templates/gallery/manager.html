@@ -1,6 +1,7 @@
 {% extends 'gallery/base.html' %}
 {% block content %}
 <section class="container">
+  {% include 'home/messages.html' %}
   <h2 class="h2 text-center">Gallery Manager</h2>
   <ul id="btnList" class="text-center">
     <li>
@@ -29,7 +30,7 @@
         </a>
       </div>
       <div class="btn-container">
-        <a href="{# url 'gallery:delete' img.id #}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'gallery:delete' img.id %}" class="btn btn-danger">Delete</a>
       </div>
     </li>
   {% endfor %}
