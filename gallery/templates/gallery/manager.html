@@ -16,15 +16,24 @@
   {% for category in images_by_category %}
   {% if category.images %}
   <h3 class="h3 text-center">{{ category.name }}</h3>
-  <ul class="gallery-list" data-id="{{ category.id }}">
+  <ol class="image-list" data-id="{{ category.id }}">
   {% for img in category.images %}
-    <li class="thumbnail-container">
-      <a data-fancybox="gallery" href="{{ img.image.url }}">
-        <img src="{{ img.thumbnail.url }}">
-      </a>
+    <li data-id="{{ img.id }}">
+      <div class="controls">
+        <i class="fas fa-caret-up fa-3x"></i>
+        <i class="fas fa-caret-down fa-3x"></i>
+      </div>
+      <div class="thumbnail-container">
+        <a data-fancybox="gallery" href="{{ img.image.url }}">
+          <img src="{{ img.thumbnail.url }}" alt="Thumbnail">
+        </a>
+      </div>
+      <div class="btn-container">
+        <a href="{# url 'gallery:delete' img.id #}" class="btn btn-danger">Delete</a>
+      </div>
     </li>
   {% endfor %}
-  </ul>
+  </ol>
   {% endif %}
   {% empty %}
   <p class="empty">There are no images to show at this time.</p>
