@@ -2,11 +2,6 @@
 
 ## High Priorities
 
-- Error pages
-  - 400
-  - 403
-  - 404
-  - 500
 - Login
 - When not logged in as superuser
   - Hide Manager Buttons
