@@ -81,13 +81,29 @@ WSGI_APPLICATION = 'skka.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    PGPASSWORD_FILE = '%s/auth/.pgpass' % BASE_DIR
+    with open(PGPASSWORD_FILE, 'r', encoding='utf8') as f:
+        content = f.readline()
+    PGPASSWORD = content[12:-1]
 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'skka',
+            'USER': 'skka',
+            'PASSWORD': PGPASSWORD,
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
