@@ -100,7 +100,7 @@ else:
     PGPASSWORD_FILE = '%s/auth/.pgpass' % BASE_DIR
     with open(PGPASSWORD_FILE, 'r', encoding='utf8') as f:
         content = f.readline()
-    PGPASSWORD = content[12:-1]
+    PGPASSWORD = content[14:-1]
 
     DATABASES = {
         'default': {
