@@ -21,5 +21,5 @@ class GalleryImage(ThumbnailedImage):
 
     def image_ops(self):
         super().image_ops(
-            relative_path=self.relative_path(''), max_size=(800, 600)
+            relative_path=self.relative_path(''), max_size=(3600, 2250)
         )
