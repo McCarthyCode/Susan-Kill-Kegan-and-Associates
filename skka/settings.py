@@ -27,7 +27,7 @@ with open(SECRET_KEY_FILE, 'r', encoding='utf8') as f:
 SECRET_KEY = content[:-1]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = [

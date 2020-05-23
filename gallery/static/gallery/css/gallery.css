@@ -3,10 +3,18 @@ form input[type=text], form input[type=number], form input[type=password], form 
   margin-bottom: 0.5rem;
 }
 form input[type=text], form input[type=number], form input[type=password],
-form textarea, form select, form label {
+form textarea, form select, form label,
+form input[type=text]:focus, form input[type=number]:focus, form input[type=password]:focus,
+form textarea:focus, form select:focus, form label:focus {
   color: #ffffff;
-  border-color: #818181;
-  background-color: #333333;
+  border-color: #555555;
+  background-color: #555555;
+}
+form .form-control::placeholder {
+  color: #ffffff;
+}
+form .form-control::-ms-input-placeholder {
+  color: #ffffff;
 }
 form label.form-control {
   cursor: pointer;
@@ -278,7 +286,6 @@ form .errorlist {
   background-image: url("/static/home/img/pavement.jpg");
 }
 #title h1.h1, #title h4.h4 {
-  text-shadow: -2px 2px 8px #000000;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -368,6 +375,10 @@ a:not(.btn):not(.close),
   color: #818181;
   text-align: center;
   font-style: italic;
+}
+
+.max-width-400 {
+  max-width: 400px;
 }
 
 .max-width-436 {
