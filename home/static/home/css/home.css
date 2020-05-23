@@ -213,12 +213,12 @@ form .errorlist {
     transition: color 0.15s;
   }
   #navbar #navbarCollapse ul .nav-item a.nav-link:hover {
-    color: #d4afff !important;
+    color: #7bc3ff !important;
   }
 }
 #footer {
   padding: 0.75rem;
-  background-color: #555555;
+  background-color: #333333;
   right: 0;
   bottom: 0;
   left: 0;
@@ -230,8 +230,8 @@ form .errorlist {
   color: #ffffff;
   line-height: 1.2;
 }
-#footer a {
-  color: aqua;
+#footer a, #footer .fa-external-link-alt {
+  color: #7bc3ff;
 }
 #footer p, #footer a {
   font-family: "Open Sans", sans-serif;
