@@ -1,27 +1,30 @@
 #!/bin/bash
 
-closure_compiler="/opt/closure-compiler/closure-compiler-v20190929.jar"
+set -e
 
-js_input_global="home/static/home/js/global.js"
-js_output_global="home/static/home/js/global.min.js"
+closure_compiler="bin/closure-compiler-v20201102.jar"
 
-js_input_carousel="home/static/home/js/carousel.js"
-js_output_carousel="home/static/home/js/carousel.min.js"
-
-js_input_carousel_manager="home/static/home/js/carousel_manager.js"
-js_output_carousel_manager="home/static/home/js/carousel_manager.min.js"
-
-js_input_gallery="gallery/static/gallery/js/gallery.js"
-js_output_gallery="gallery/static/gallery/js/gallery.min.js"
-
-declare -a commands=(
-  # "java -jar $closure_compiler --js $js_input_global --js_output_file $js_output_global"
-  # "java -jar $closure_compiler --js $js_input_carousel --js_output_file $js_output_carousel"
-  # "java -jar $closure_compiler --js $js_input_carousel_manager --js_output_file $js_output_carousel_manager"
-  # "java -jar $closure_compiler --js $js_input_gallery --js_output_file $js_output_gallery"
+declare -a path=(
+  "home/static/home/js"
+  "gallery/static/gallery/js"
 )
 
-for i in "${commands[@]}"; do
-  echo "$i"
-  $i
+trap 'echo -e "\nExiting…" >&2; pkill $$; exit' SIGINT
+
+while true; do
+  for dir in ${path[@]}; do
+    files=$(ls -1 $dir/*.js | sed '/.*\.min\.js/d')
+
+    for input in $files; do
+      output=$(echo $input | sed -r 's/(.*)\.js/\1\.min\.js/')
+      cmd="java -jar $closure_compiler --language_in=STABLE --js $input --js_output_file $output"
+
+      if [ $input -nt $output ]; then
+        echo "[$(date -Iseconds)] $cmd" >&2
+        $cmd
+      fi
+    done
+  done
+
+  sleep 1
 done
