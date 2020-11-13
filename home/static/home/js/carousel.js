@@ -1,34 +1,47 @@
-$(document).ready(() => {
-  $('#carousel').hover(
-    function () {
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+$(() => {
+  const $carousel = $('#carousel');
+  $carousel
+    .on('mouseenter', function () {
       $(this).carousel('pause');
-    },
-    function () {
+    })
+    .on('mouseleave', function () {
       $(this).carousel('cycle');
-    }
-  );
-
-  function carouselResize() {
-    let $inner = $('#carousel .carousel-inner');
-    let $items = $('#carousel .carousel-inner .carousel-item')
-    let $imgs = $('#carousel .carousel-inner .carousel-item img')
-    let max = 0;
-
-    $imgs.each(function () {
-      let $this = $(this);
-      let width = this.naturalWidth;
-      let height = this.naturalHeight;
-      let newWidth = Math.min(width, $(window).width());
-      let newHeight = Math.min(height, height * $(window).width() / width);
-
-      $this.width(newWidth);
-      $this.height(newHeight);
-
-      max = newHeight > max ? newHeight : max;
+    })
+    .on('slide.bs.carousel', function (event) {
+      // console.log(event);
     });
 
-    $('#carousel .carousel-inner, #carousel .carousel-inner .carousel-item')
-      .css('height', `${max}px`);
+  async function carouselResize() {
+    const windowWidth = $(window).width();
+
+    let count = 0;
+    let maxHeight = 0;
+    const $imgs = $carousel.find('img');
+    $imgs.each(function () {
+      const $img = $(this).one('load', function () {
+        const width = this.naturalWidth;
+        const height = this.naturalHeight;
+        const newWidth = Math.min(width, windowWidth);
+        const newHeight = Math.min(height, (height * windowWidth) / width);
+
+        $img.width(newWidth);
+        $img.height(newHeight);
+
+        maxHeight = Math.max(newHeight, maxHeight);
+        count++;
+      });
+    });
+
+    let n = 0;
+    while (count !== $imgs.length) {
+      await sleep(100);
+    }
+
+    $carousel.find('.carousel-item').css('height', `${maxHeight}px`);
   }
 
   carouselResize();
