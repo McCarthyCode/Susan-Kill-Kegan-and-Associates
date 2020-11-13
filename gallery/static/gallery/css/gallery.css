@@ -152,7 +152,7 @@ form .errorlist {
 
 #navbar {
   grid-row: title-bottom/nav-bottom;
-  background-color: #555555;
+  background-color: #645379;
   height: 56px;
   box-shadow: -4px 4px 8px #1e1e1e;
 }
@@ -223,23 +223,24 @@ form .errorlist {
   bottom: 0;
   left: 0;
   z-index: 2;
-}
-#footer p {
-  margin: 0;
-  text-align: center;
+  font-family: "Open Sans", sans-serif;
   color: #ffffff;
-  line-height: 1.2;
+}
+#footer > * {
+  display: block;
+  text-align: center;
+  margin-bottom: 2px !important;
+}
+#footer > small {
+  margin: 0;
 }
 #footer a, #footer .fa-external-link-alt {
-  color: #7bc3ff;
-}
-#footer p, #footer a {
-  font-family: "Open Sans", sans-serif;
+  color: aqua;
 }
 #footer .footer-list {
-  max-width: 10.5rem;
+  max-width: 278px;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   overflow: hidden;
 }
 #footer .footer-list ul {
@@ -255,16 +256,10 @@ form .errorlist {
   line-height: 80%;
   flex: 1 0 auto;
   margin: 0.25em 0;
-  padding: 0 0.5rem;
-  text-align: center;
-  border-left: 1px solid white;
+  padding: 0 0.5rem 2px 0.5rem;
+  border-left: 1px solid #595959;
 }
 
-@media screen and (min-width: 347px) {
-  #footer .footer-list {
-    max-width: 20.5rem;
-  }
-}
 #grid {
   display: grid;
   grid-template-rows: [top] auto [title-bottom] auto [bottom];
@@ -326,7 +321,7 @@ p, a, li, address {
 
 a:not(.btn):not(.close),
 .fa-external-link-alt {
-  color: aqua;
+  color: #7bc3ff;
 }
 
 #btnList {
