@@ -17,6 +17,30 @@ import pytz
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# Retrieve production stage environment variable
+class MissingEnvironmentVariable(Exception):
+    pass
+
+
+class InvalidEnvironmentVariable(Exception):
+    pass
+
+
+try:
+    STAGE = os.environ['STAGE']
+except KeyError:
+    raise MissingEnvironmentVariable(
+        'Environment variable STAGE is not defined.')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+if STAGE == 'development' or STAGE == 'staging':
+    DEBUG = True
+elif STAGE == 'production':
+    DEBUG = False
+else:
+    raise InvalidEnvironmentVariable(
+        'The value of environment variable STAGE is not valid.')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -26,21 +50,19 @@ with open(SECRET_KEY_FILE, 'r', encoding='utf8') as f:
     content = f.readline()
 SECRET_KEY = content[:-1]
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-if DEBUG:
-    ALLOWED_HOSTS = [
-        '10.0.0.100',
-    ]
-else:
+if STAGE == 'development':
     ALLOWED_HOSTS = [
         'localhost',
-        '161.35.61.106',
+    ]
+elif STAGE == 'staging':
+    ALLOWED_HOSTS = [
+        'staging.skkeganlandscapes.com',
+    ]
+elif STAGE == 'production':
+    ALLOWED_HOSTS = [
         'skkeganlandscapes.com',
         'www.skkeganlandscapes.com',
     ]
-
 
 # Application definition
 
@@ -85,11 +107,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'skka.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if DEBUG:
+if STAGE == 'development':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -118,19 +139,22 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -147,7 +171,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -157,7 +180,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 # Additional variables
 
