@@ -5,23 +5,24 @@
   bottom: 0
   left: 0
   z-index: 2
+  font-family: $open-sans
+  color: $white
 
-  p
-    margin: 0
+  & > *
+    display: block
     text-align: center
-    color: $white
-    line-height: 1.2
+    margin-bottom: 2px !important
+
+  & > small
+    margin: 0
 
   a, .fa-external-link-alt
-    color: $light-blue
-
-  p, a
-    font-family: $open-sans
+    color: $aqua
 
   .footer-list
-    max-width: 10.5rem
+    max-width: 278px
     position: relative
-    margin: auto
+    margin: 0 auto
     overflow: hidden
 
     ul
@@ -37,10 +38,5 @@
         line-height: 80%
         flex: 1 0 auto
         margin: .25em 0
-        padding: 0 .5rem
-        text-align: center
-        border-left: 1px solid white
-
-@media screen and (min-width: 347px)
-  #footer .footer-list
-    max-width: 20.5rem
+        padding: 0 .5rem 2px .5rem
+        border-left: 1px solid hsl(0, 0, 35)
