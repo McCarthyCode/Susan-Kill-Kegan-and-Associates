@@ -6,7 +6,7 @@ $(document).ready(() => {
 
   // external link icon
   $('a.external-link')
-    .after(' <i class="fas fa-external-link-alt" title="External Link"></i>');
+    .after('<span class="user-select-none"> <i class="fas fa-external-link-alt" title="External Link"></i></span>');
 
   // resize title
   function resizeTitle() {

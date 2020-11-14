@@ -1,23 +1,123 @@
-$white: #ffffff
-$white-50: #ffffff80
-$lighter-gray: #bbbbbb
-$light-gray: #818181
-$mid-gray: #555555
-$dark-gray: #333333
-$dark-gray-50: #33333380
-$darker-gray: #1e1e1e
-$black: #000000
+@use "sass:map"
 
+// grayscale
+$lightness-min: 0
+$lightness-max: 90
+$delta: ($lightness-max - $lightness-min) / 20
+
+$lightness: ()
+@for $i from 0 through 20
+  $lightness: map.merge($lightness, ($i * 5: $i * $delta))
+
+$white: hsl(0, 0, map.get($lightness, 100))
+$gray-95: hsl(0, 0, map.get($lightness, 95))
+$gray-90: hsl(0, 0, map.get($lightness, 90))
+$gray-85: hsl(0, 0, map.get($lightness, 85))
+$gray-80: hsl(0, 0, map.get($lightness, 80))
+$gray-75: hsl(0, 0, map.get($lightness, 75))
+$gray-70: hsl(0, 0, map.get($lightness, 70))
+$gray-65: hsl(0, 0, map.get($lightness, 65))
+$gray-60: hsl(0, 0, map.get($lightness, 60))
+$gray-55: hsl(0, 0, map.get($lightness, 55))
+$gray-50: hsl(0, 0, map.get($lightness, 50))
+$gray-45: hsl(0, 0, map.get($lightness, 45))
+$gray-40: hsl(0, 0, map.get($lightness, 40))
+$gray-35: hsl(0, 0, map.get($lightness, 35))
+$gray-30: hsl(0, 0, map.get($lightness, 30))
+$gray-25: hsl(0, 0, map.get($lightness, 25))
+$gray-20: hsl(0, 0, map.get($lightness, 20))
+$gray-15: hsl(0, 0, map.get($lightness, 15))
+$gray-10: hsl(0, 0, map.get($lightness, 10))
+$gray-05: hsl(0, 0, map.get($lightness, 5))
+$black: hsl(0, 0, map.get($lightness, 0))
+
+$white-75: hsla(0, 0, map.get($lightness, 100), .75)
+$gray-95-75: hsla(0, 0, map.get($lightness, 95), .75)
+$gray-90-75: hsla(0, 0, map.get($lightness, 90), .75)
+$gray-85-75: hsla(0, 0, map.get($lightness, 85), .75)
+$gray-80-75: hsla(0, 0, map.get($lightness, 80), .75)
+$gray-75-75: hsla(0, 0, map.get($lightness, 75), .75)
+$gray-70-75: hsla(0, 0, map.get($lightness, 70), .75)
+$gray-65-75: hsla(0, 0, map.get($lightness, 65), .75)
+$gray-60-75: hsla(0, 0, map.get($lightness, 60), .75)
+$gray-55-75: hsla(0, 0, map.get($lightness, 55), .75)
+$gray-50-75: hsla(0, 0, map.get($lightness, 50), .75)
+$gray-45-75: hsla(0, 0, map.get($lightness, 45), .75)
+$gray-40-75: hsla(0, 0, map.get($lightness, 40), .75)
+$gray-35-75: hsla(0, 0, map.get($lightness, 35), .75)
+$gray-30-75: hsla(0, 0, map.get($lightness, 30), .75)
+$gray-25-75: hsla(0, 0, map.get($lightness, 25), .75)
+$gray-20-75: hsla(0, 0, map.get($lightness, 20), .75)
+$gray-15-75: hsla(0, 0, map.get($lightness, 15), .75)
+$gray-10-75: hsla(0, 0, map.get($lightness, 10), .75)
+$gray-05-75: hsla(0, 0, map.get($lightness, 5), .75)
+$black-75: hsla(0, 0, map.get($lightness, 0), .75)
+
+$white-50: hsla(0, 0, map.get($lightness, 100), .5)
+$gray-95-50: hsla(0, 0, map.get($lightness, 95), .5)
+$gray-90-50: hsla(0, 0, map.get($lightness, 90), .5)
+$gray-85-50: hsla(0, 0, map.get($lightness, 85), .5)
+$gray-80-50: hsla(0, 0, map.get($lightness, 80), .5)
+$gray-75-50: hsla(0, 0, map.get($lightness, 75), .5)
+$gray-70-50: hsla(0, 0, map.get($lightness, 70), .5)
+$gray-65-50: hsla(0, 0, map.get($lightness, 65), .5)
+$gray-60-50: hsla(0, 0, map.get($lightness, 60), .5)
+$gray-55-50: hsla(0, 0, map.get($lightness, 55), .5)
+$gray-50-50: hsla(0, 0, map.get($lightness, 50), .5)
+$gray-45-50: hsla(0, 0, map.get($lightness, 45), .5)
+$gray-40-50: hsla(0, 0, map.get($lightness, 40), .5)
+$gray-35-50: hsla(0, 0, map.get($lightness, 35), .5)
+$gray-30-50: hsla(0, 0, map.get($lightness, 30), .5)
+$gray-25-50: hsla(0, 0, map.get($lightness, 25), .5)
+$gray-20-50: hsla(0, 0, map.get($lightness, 20), .5)
+$gray-15-50: hsla(0, 0, map.get($lightness, 15), .5)
+$gray-10-50: hsla(0, 0, map.get($lightness, 10), .5)
+$gray-05-50: hsla(0, 0, map.get($lightness, 5), .5)
+$black-50: hsla(0, 0, map.get($lightness, 0), .5)
+
+$white-25: hsla(0, 0, map.get($lightness, 100), .25)
+$gray-95-25: hsla(0, 0, map.get($lightness, 95), .25)
+$gray-90-25: hsla(0, 0, map.get($lightness, 90), .25)
+$gray-85-25: hsla(0, 0, map.get($lightness, 85), .25)
+$gray-80-25: hsla(0, 0, map.get($lightness, 80), .25)
+$gray-75-25: hsla(0, 0, map.get($lightness, 75), .25)
+$gray-70-25: hsla(0, 0, map.get($lightness, 70), .25)
+$gray-65-25: hsla(0, 0, map.get($lightness, 65), .25)
+$gray-60-25: hsla(0, 0, map.get($lightness, 60), .25)
+$gray-55-25: hsla(0, 0, map.get($lightness, 55), .25)
+$gray-50-25: hsla(0, 0, map.get($lightness, 50), .25)
+$gray-45-25: hsla(0, 0, map.get($lightness, 45), .25)
+$gray-40-25: hsla(0, 0, map.get($lightness, 40), .25)
+$gray-35-25: hsla(0, 0, map.get($lightness, 35), .25)
+$gray-30-25: hsla(0, 0, map.get($lightness, 30), .25)
+$gray-25-25: hsla(0, 0, map.get($lightness, 25), .25)
+$gray-20-25: hsla(0, 0, map.get($lightness, 20), .25)
+$gray-15-25: hsla(0, 0, map.get($lightness, 15), .25)
+$gray-10-25: hsla(0, 0, map.get($lightness, 10), .25)
+$gray-05-25: hsla(0, 0, map.get($lightness, 5), .25)
+$black-25: hsla(0, 0, map.get($lightness, 0), .25)
+
+// common grayscale names
+$lighter-gray: $gray-80
+$light-gray: $gray-60
+$mid-gray: $gray-40
+$dark-gray: $gray-20
+$dark-gray-50: $gray-20-50
+$darker-gray: $gray-10
+
+// saturated colors
 $slate: #87806d
 $red: #ff0000
 $orange: #f8a572
 $yellow: #faf9b2
 $green: #77ffc0
-$aqua: aqua
+$rangoon-green: #0d0f0b
+$rangitoto: #333b2b
 $light-blue: #7bc3ff
-$purple: #d4afff
-$dark-purple: #645379
+$light-purple: #d4afff
+$purple: #645379
 
+// breakpoints
 $breakpoint-xs: 0
 $breakpoint-sm: 576px
 $breakpoint-md: 768px

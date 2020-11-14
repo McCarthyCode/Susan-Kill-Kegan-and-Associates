@@ -6,15 +6,15 @@ form input[type=text], form input[type=number], form input[type=password],
 form textarea, form select, form label,
 form input[type=text]:focus, form input[type=number]:focus, form input[type=password]:focus,
 form textarea:focus, form select:focus, form label:focus {
-  color: #ffffff;
-  border-color: #555555;
-  background-color: #555555;
+  color: #e6e6e6;
+  border-color: #5c5c5c;
+  background-color: #5c5c5c;
 }
 form .form-control::placeholder {
-  color: #ffffff;
+  color: #e6e6e6;
 }
 form .form-control::-ms-input-placeholder {
-  color: #ffffff;
+  color: #e6e6e6;
 }
 form label.form-control {
   cursor: pointer;
@@ -22,9 +22,9 @@ form label.form-control {
 form select.form-control,
 form select.form-control:focus {
   padding: 0 0.5rem;
-  color: #ffffff;
-  border-color: #555555;
-  background-color: #555555;
+  color: #e6e6e6;
+  border-color: #5c5c5c;
+  background-color: #5c5c5c;
 }
 form select.form-control option,
 form select.form-control:focus option {
@@ -33,14 +33,14 @@ form select.form-control:focus option {
 form input[type=file] {
   width: 100%;
   height: 38px;
-  color: #ffffff;
+  color: #e6e6e6;
 }
 form .input-group label {
   cursor: pointer;
 }
 form .input-group .input-group-append {
-  border-color: #818181;
-  background-color: #818181;
+  border-color: #8a8a8a;
+  background-color: #8a8a8a;
   width: 40px;
   height: 38px;
   border-top-right-radius: 0.25rem;
@@ -49,16 +49,16 @@ form .input-group .input-group-append {
 }
 form .input-group .input-group-append input[type=radio], form .input-group .input-group-append input[type=checkbox], form .input-group .input-group-append .calendar {
   cursor: pointer;
-  color: #ffffff;
+  color: #e6e6e6;
 }
 form .input-group .input-group-append input[type=radio] {
   height: 16px;
   margin: auto;
 }
 form .input-group .input-group-append .input-group-text {
-  color: #ffffff;
-  border-color: #818181;
-  background-color: #818181;
+  color: #e6e6e6;
+  border-color: #8a8a8a;
+  background-color: #8a8a8a;
 }
 form .input-group .input-group-append .input-group-text i {
   min-width: 14px;
@@ -154,11 +154,11 @@ form .errorlist {
   grid-row: title-bottom/nav-bottom;
   background-color: #645379;
   height: 56px;
-  box-shadow: -4px 4px 8px #1e1e1e;
+  box-shadow: -4px 4px 8px #171717;
 }
 #navbar #navbarMenuButton {
   border: none;
-  color: #ffffff;
+  color: #e6e6e6;
   background-color: transparent;
   -webkit-transition: color 0.15s;
   transition: color 0.15s;
@@ -168,7 +168,7 @@ form .errorlist {
   vertical-align: -8px;
 }
 #navbar #navbarMenuButton:hover {
-  color: #d4afff !important;
+  color: rgba(230, 230, 230, 0.5) !important;
 }
 #navbar #navbarCollapse {
   display: none;
@@ -176,7 +176,7 @@ form .errorlist {
   top: 56px;
   right: 0;
   left: 0;
-  background-color: #1e1e1e;
+  background-color: #171717;
   padding: 0 0.5rem 0.5rem 0.5rem;
   overflow-y: auto;
   z-index: 3;
@@ -189,9 +189,9 @@ form .errorlist {
   text-align: center;
 }
 #navbar #navbarCollapse ul .nav-item a.nav-link {
-  background-color: #555555;
+  background-color: #5c5c5c;
   border-radius: 0.25rem;
-  color: #ffffff !important;
+  color: #e6e6e6 !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -207,7 +207,7 @@ form .errorlist {
   #navbar #navbarCollapse ul .nav-item a.nav-link {
     padding: 0 0.5rem;
     vertical-align: middle;
-    color: #ffffff !important;
+    color: #e6e6e6 !important;
     background-color: transparent;
     -webkit-transition: color 0.15s;
     transition: color 0.15s;
@@ -218,13 +218,13 @@ form .errorlist {
 }
 #footer {
   padding: 0.75rem;
-  background-color: #333333;
+  background-color: #2e2e2e;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 2;
   font-family: "Open Sans", sans-serif;
-  color: #ffffff;
+  color: #e6e6e6;
 }
 #footer > * {
   display: block;
@@ -234,11 +234,8 @@ form .errorlist {
 #footer > small {
   margin: 0;
 }
-#footer a, #footer .fa-external-link-alt {
-  color: aqua;
-}
 #footer .footer-list {
-  max-width: 278px;
+  max-width: 284px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -281,17 +278,13 @@ form .errorlist {
   background-image: url("/static/home/img/pavement.jpg");
 }
 #title h1.h1, #title h4.h4 {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  display: inline-block;
 }
 #title h1.h1 {
   color: #faf9b2;
 }
 #title h4.h4 {
-  color: #ffffff;
+  color: #e6e6e6;
 }
 #title h4.h4 .bullet {
   color: #d4afff;
@@ -299,7 +292,7 @@ form .errorlist {
 
 #content {
   grid-row: nav-bottom/bottom;
-  background-color: #1e1e1e;
+  background-color: #171717;
 }
 
 h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6 {
@@ -316,7 +309,17 @@ h3.h3, h4.h4 {
 
 p, a, li, address {
   font-family: "Open Sans", sans-serif;
-  color: #ffffff;
+  color: #e6e6e6;
+}
+
+.user-select-none {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 a:not(.btn):not(.close),
@@ -335,8 +338,8 @@ a:not(.btn):not(.close),
   margin-bottom: 0;
 }
 #btnList li .btn-secondary {
-  background-color: #555555;
-  border-color: #555555;
+  background-color: #5c5c5c;
+  border-color: #5c5c5c;
 }
 #btnList li .btn-secondary:hover {
   background-color: #444;
@@ -344,7 +347,7 @@ a:not(.btn):not(.close),
 }
 
 .fa-external-link-alt {
-  font-size: 0.5em;
+  font-size: 0.75em;
   vertical-align: 1px;
 }
 
@@ -362,12 +365,12 @@ a:not(.btn):not(.close),
 .thumbnail-container a img {
   max-width: 100px;
   max-height: 100px;
-  border: 0.25rem solid #818181;
+  border: 0.25rem solid #8a8a8a;
   box-sizing: unset;
 }
 
 .empty {
-  color: #818181;
+  color: #8a8a8a;
   text-align: center;
   font-style: italic;
 }
@@ -395,7 +398,7 @@ a:not(.btn):not(.close),
   list-style: none;
   display: flex;
   position: relative;
-  background-color: #555555;
+  background-color: #5c5c5c;
   width: 100%;
   min-width: 290px;
   max-width: 400px;
@@ -412,7 +415,7 @@ a:not(.btn):not(.close),
   transition: color 0.15s;
 }
 .image-list li .controls i:hover {
-  color: #818181;
+  color: #8a8a8a;
 }
 .image-list li .btn-container {
   position: relative;
