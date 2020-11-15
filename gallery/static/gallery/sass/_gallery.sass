@@ -1,0 +1,24 @@
+.gallery-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: 1rem
+
+  img
+    max-width: 100px
+
+  @media (min-width: $breakpoint-sm)
+    img
+      max-width: 239px
+
+  @media (min-width: $breakpoint-md)
+    img
+      max-width: 211px
+
+  @media (min-width: $breakpoint-lg)
+    img
+      max-width: 212px
+
+  @media (min-width: $breakpoint-xl)
+    img
+      max-width: 257px

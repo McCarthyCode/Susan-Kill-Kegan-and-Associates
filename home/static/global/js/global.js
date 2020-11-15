@@ -5,8 +5,9 @@ $(document).ready(() => {
   console.log('https://mccarthycode.com/');
 
   // external link icon
-  $('a.external-link')
-    .after('<span class="user-select-none"> <i class="fas fa-external-link-alt" title="External Link"></i></span>');
+  $('a.external-link').after(
+    '<span class="user-select-none"> <i class="fas fa-external-link-alt" title="External Link"></i></span>',
+  );
 
   // resize title
   function resizeTitle() {
@@ -25,7 +26,12 @@ $(document).ready(() => {
     const carouselHeight = $('#carousel').outerHeight();
     const footerHeight = $('#footer').outerHeight();
 
-    const height = viewportHeight - titleHeight - navbarHeight - (carouselHeight === undefined ? 0 : carouselHeight) - footerHeight;
+    const height =
+      viewportHeight -
+      titleHeight -
+      navbarHeight -
+      (carouselHeight === undefined ? 0 : carouselHeight) -
+      footerHeight;
 
     $('#content .container').css({
       'min-height': `${height}px`,
@@ -39,7 +45,6 @@ $(document).ready(() => {
   }
 
   resize();
-  setTimeout(resize, 500); // insurance measure
   $(window).on('resize orientationchange', resize);
 
   // navbar menu

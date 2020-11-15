@@ -1,11 +1,11 @@
-@import '_fonts'
-@import '_variables'
-@import '_mixins'
+@import 'fonts'
+@import 'variables'
+@import 'mixins'
 
-@import '_forms'
-@import '_messages'
-@import '_navbar'
-@import '_footer'
+@import 'forms'
+@import 'messages'
+@import 'navbar'
+@import 'footer'
 
 #grid
   display: grid
@@ -16,9 +16,6 @@
   .container
     padding-top: 1rem
     padding-bottom: 1rem
-
-#content .container
-  max-width: 800px
 
 #title
   grid-row: top / title-bottom
@@ -89,22 +86,18 @@ a:not(.btn):not(.close),
   font-size: .75em
   vertical-align: 1px
 
+a[data-fancybox]
+  cursor: zoom-in
+
 .thumbnail-container
-  position: relative
-  width: 108px
-  height: 108px
+  display: flex
+  justify-content: center
+  align-content: center
+  flex-direction: column
 
-  a
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-
-    img
-      max-width: 100px
-      max-height: 100px
-      border: .25rem solid $light-gray
-      box-sizing: unset
+  img
+    border: .25rem solid $light-gray
+    box-sizing: unset
 
 .empty
   color: $light-gray

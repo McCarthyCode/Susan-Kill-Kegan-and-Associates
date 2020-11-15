@@ -16,7 +16,7 @@
   {% for img in category.images %}
     <li class="thumbnail-container">
       <a data-fancybox="gallery" href="{{ img.image.url }}">
-        <img src="{{ img.thumbnail.url }}">
+        <img src="{{ img.image.url }}">
       </a>
     </li>
   {% endfor %}

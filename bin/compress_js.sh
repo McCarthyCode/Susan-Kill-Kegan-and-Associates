@@ -5,6 +5,7 @@ set -e
 closure_compiler="bin/closure-compiler-v20201102.jar"
 
 declare -a path=(
+  "home/static/global/js"
   "home/static/home/js"
   "gallery/static/gallery/js"
 )

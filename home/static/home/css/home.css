@@ -268,10 +268,6 @@ form .errorlist {
   padding-bottom: 1rem;
 }
 
-#content .container {
-  max-width: 800px;
-}
-
 #title {
   grid-row: top/title-bottom;
   background-color: #87806d;
@@ -351,20 +347,17 @@ a:not(.btn):not(.close),
   vertical-align: 1px;
 }
 
+a[data-fancybox] {
+  cursor: zoom-in;
+}
+
 .thumbnail-container {
-  position: relative;
-  width: 108px;
-  height: 108px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
-.thumbnail-container a {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.thumbnail-container a img {
-  max-width: 100px;
-  max-height: 100px;
+.thumbnail-container img {
   border: 0.25rem solid #8a8a8a;
   box-sizing: unset;
 }
