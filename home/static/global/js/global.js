@@ -1,3 +1,7 @@
+const sleep = (milliseconds) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
+
 $(document).ready(() => {
   const breakpointMd = 768;
 
@@ -10,8 +14,14 @@ $(document).ready(() => {
   );
 
   // resize title
-  function resizeTitle() {
-    const height = $('#title .container').outerHeight();
+  async function resizeTitle() {
+    const $container = $('#title .container');
+    let height = $container.outerHeight();
+
+    while (height < 100) {
+      await sleep(50);
+      height = $container.outerHeight();
+    }
 
     $('#grid').css({
       'grid-template-rows': `[top] ${height}px [title-bottom] auto [bottom]`,

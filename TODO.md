@@ -1,10 +1,5 @@
 # To-Do
 
-## High Priorities
+# High Priorities
 
-- Launch
-  - Site Tour
-  - Hosting
-  - Domain
-  - SSL
-  - Backups
+- Carousel lazy load
