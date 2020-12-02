@@ -1,10 +1,5 @@
 # To-Do
 
-## High Priorities
+# Medium Priorities
 
-- Launch
-  - Site Tour
-  - Hosting
-  - Domain
-  - SSL
-  - Backups
+- Convert sleep function to a module
