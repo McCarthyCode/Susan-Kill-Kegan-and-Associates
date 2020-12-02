@@ -1,5 +1,5 @@
 # To-Do
 
-# High Priorities
+# Medium Priorities
 
-- Carousel lazy load
+- Convert sleep function to a module

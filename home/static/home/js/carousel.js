@@ -1,3 +1,7 @@
+const sleep = (milliseconds) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
+
 $(document).ready(() => {
   $('#carousel').hover(
     function () {
@@ -5,30 +9,35 @@ $(document).ready(() => {
     },
     function () {
       $(this).carousel('cycle');
-    }
+    },
   );
 
   function carouselResize() {
-    let $inner = $('#carousel .carousel-inner');
-    let $items = $('#carousel .carousel-inner .carousel-item')
-    let $imgs = $('#carousel .carousel-inner .carousel-item img')
-    let max = 0;
+    const $carousel = $('#carousel');
+    const $imgs = $carousel.find('img');
 
-    $imgs.each(function () {
-      let $this = $(this);
+    let max = 0;
+    $imgs.each(async function () {
       let width = this.naturalWidth;
       let height = this.naturalHeight;
-      let newWidth = Math.min(width, $(window).width());
-      let newHeight = Math.min(height, height * $(window).width() / width);
 
+      while (!width || !height) {
+        await sleep(50);
+        width = this.naturalWidth;
+        height = this.naturalHeight;
+      }
+
+      const newWidth = Math.min(width, $(window).width());
+      const newHeight = Math.min(height, (height * $(window).width()) / width);
+
+      const $this = $(this);
       $this.width(newWidth);
       $this.height(newHeight);
 
-      max = newHeight > max ? newHeight : max;
+      max = Math.max(newHeight, max);
     });
 
-    $('#carousel .carousel-inner, #carousel .carousel-inner .carousel-item')
-      .css('height', `${max}px`);
+    $carousel.find('.carousel-inner, .carousel-item').css('height', `${max}px`);
   }
 
   carouselResize();
