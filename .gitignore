@@ -1,7 +1,8 @@
-auth
-db.sqlite3
-.env
-media
+/auth
+/db.sqlite3
+/.env
+/media
 __pycache__
-staticfiles
-.vscode
+/staticfiles
+/.venv
+/.vscode
